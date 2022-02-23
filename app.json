@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Parolando",
+    "slug": "Parolando",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
