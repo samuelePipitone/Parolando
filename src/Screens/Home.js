@@ -1,71 +1,41 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native"; 
+import { View, SafeAreaView } from "react-native"; 
 
 //Style
 import styles from '../Styles/Style_Home';
 
 //My imports
+import Kda from '../Custom components/Kda';
+import Badges from '../Custom components/Badges';
+import Options from '../Custom components/Options';
+import PlayingField from '../Custom components/PlayingField';
 
-
-const mockup = [
-	{
-		'letter': "A",
-		'state': "nonIndovinato",
-		'id': 1
-	},
-	{
-		'letter': "B",
-		'state': "Indovinato",
-		'id': 2
-	},
-	{
-		'letter': "C",
-		'state': "Indovinato",
-		'id': 3
-	},
-	{
-		'letter': "D",
-		'state': "Indovinato",
-		'id': 4
-	},
-	{
-		'letter': "E",
-		'state': "Indovinato",
-		'id': 5
-	}
-];
-
-const myKey = (item) => {
-	return item.id;
-}  
-
-/*
-			<FlatList
-			data = {mockup}
-			renderItem = {({item}) => 
-				<View>
-					<Text>{item.data}</Text>
-				</View>
-			}
-			keyExtractor = {myKey}
-			/>
-*/
 
 export default function SecondScreen({ navigation }){
 
 	return(
-		<View style={styles.container}>
-			<View style={styles.header}>
+		<SafeAreaView style={styles.androidSafeArea}>
+			<View style={styles.container}>
+				<View style={styles.header}>
+					<View style={styles.header_badges}>
+						<Badges/>
+					</View>
+					<View style={styles.header_kda}>
 
-			</View>
+					</View>
+					<View style={styles.header_options}>
 
-			<View style={styles.body}>
-				
-			</View>
+					</View>
+				</View>
 
-			<View style={styles.footer}>
-				
+				<View style={styles.body}>
+					
+				</View>
+
+				<View style={styles.footer}>
+					
+				</View>
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
