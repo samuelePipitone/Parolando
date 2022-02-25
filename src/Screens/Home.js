@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView } from "react-native"; 
+import { View, SafeAreaView, Keyboard } from "react-native"; 
 
 //Style
 import styles from '../Styles/Style_Home';
@@ -10,6 +10,10 @@ import Badges from '../Custom components/Badges';
 import Options from '../Custom components/Options';
 import PlayingField from '../Custom components/PlayingField';
 
+/* 
+	NOTE:
+		-margine da togliere fisso e mettere variabile
+*/
 
 export default function SecondScreen({ navigation }){
 
@@ -21,15 +25,15 @@ export default function SecondScreen({ navigation }){
 						<Badges/>
 					</View>
 					<View style={styles.header_kda}>
-
+						<Kda/>
 					</View>
 					<View style={styles.header_options}>
-
+						<Options/>
 					</View>
 				</View>
 
 				<View style={styles.body}>
-					
+					<PlayingField/>
 				</View>
 
 				<View style={styles.footer}>

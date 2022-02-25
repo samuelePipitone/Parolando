@@ -1,6 +1,9 @@
 import React from "react";
+import { View, FlatList, Text } from "react-native";
 
-/*
+import styles from '../Styles/Style_PlayingField';
+
+
 const mockup = [
 	{
 		'letter': "A",
@@ -33,16 +36,87 @@ const myKey = (item) => {
 	return item.id;
 }  
 
-			<FlatList
-			data = {mockup}
-			renderItem = {({item}) => 
-				<View>
-					<Text>{item.data}</Text>
-				</View>
-			}
-			keyExtractor = {myKey}
-			/>
-*/
-
 export default function PlayingField(){
+	return(
+		<View style={styles.container}>
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+			<View style={styles.blocks}>
+				<FlatList
+				horizontal={true}
+				data = {mockup}
+				renderItem = {({item}) => 
+					<View style={styles.singleBlock}>
+						<Text style={styles.textBlock}>{item.letter}</Text>
+					</View>
+				}
+				keyExtractor = {myKey}
+				/>
+			</View>
+
+		</View>
+	);
 }

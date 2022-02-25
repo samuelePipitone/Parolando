@@ -10,10 +10,10 @@ export default function Badges(){
 			<View style={styles.image_holder}>
 
 				<View style={styles.blockOne}>
-					<Image style={styles.images} source={require('../images/silver.jpg')} style={styles.images}/>
+					<Image style={styles.images} source={require('../images/platinum.png')} style={styles.images}/>
 				</View>
 				<View style={styles.blockTwo}>
-					<Image style={styles.images} source={require('../images/silver.jpg')} style={styles.images}/>
+					<Image style={styles.images} source={require('../images/gold.jpg')} style={styles.images}/>
 				</View>
 				<View style={styles.blockThree}>
 					<Image style={styles.images} source={require('../images/silver.jpg')} style={styles.images}/>
