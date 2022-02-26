@@ -6,7 +6,8 @@ var height = Dimensions.get('window').height; //full height
 export default StyleSheet.create({
 	androidSafeArea: {
 		flex: 1,
-		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		backgroundColor: 'white'
 	},
 	container: {
 		flex: 1,
@@ -15,28 +16,29 @@ export default StyleSheet.create({
 	  header: {
 		  width: width,
 		  height: '10%',
-		  flexDirection: 'row'
+		  flexDirection: 'row',
+		  marginTop: '3%'
 	  },
 	  body: {
 		width: '100%',
 		height: '60%',
-		backgroundColor: 'blue'
+		//backgroundColor: 'blue'
 	  },
 	  footer: {
 		width: '100%',
 		height: '30%',
-		backgroundColor: 'red'
+		//backgroundColor: 'red'
 	  },
 	  header_badges: {
-		backgroundColor: 'pink',
+		//backgroundColor: 'pink',
 		flex: 3
 	  },
 	  header_kda: {
-		backgroundColor: 'yellow',
+		//backgroundColor: 'yellow',
 		flex: 2
 	  },
 	  header_options: {
-		backgroundColor: 'green',
+		//backgroundColor: 'green',
 		flex: 1
 	  }
 });

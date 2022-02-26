@@ -34,7 +34,7 @@ const mockup = [
 
 const myKey = (item) => {
 	return item.id;
-}  
+};  
 
 export default function PlayingField(){
 	return(

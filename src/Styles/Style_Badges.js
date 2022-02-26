@@ -3,17 +3,17 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: 'black',
+		//backgroundColor: 'black',
 		margin: '2%'
 	},
 	image_holder: {
 		flex: 8,
-		backgroundColor: 'red',
+		//backgroundColor: 'red',
 		flexDirection: 'row'
 	},
 	title_holder: {
 		flex: 3,
-		backgroundColor: 'orange',
+		//backgroundColor: 'orange',
 		flexDirection: 'row'
 	},
 	blockOne:{

@@ -11,7 +11,7 @@ export default StyleSheet.create({
 	},
     blocks: {
         flex: 1,
-        backgroundColor: 'black',
+        //backgroundColor: 'black',
         margin: 1,
         alignItems: 'center'
     },
@@ -21,11 +21,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 1,
-        marginTop: '10%',
-        marginBottom: '10%'
+        marginTop: '5%',
+        marginBottom: '5%',
+		marginRight: 2,
+		borderRadius: 1
     },
     textBlock: {
         color: 'white',
-        fontSize: width/10
+        fontSize: width/10,
+		fontWeight: 'bold'
     }
 });
