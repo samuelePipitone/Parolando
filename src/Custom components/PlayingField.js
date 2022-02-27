@@ -1,8 +1,10 @@
 import React from "react";
 import { View, FlatList, Text } from "react-native";
+import { Subject } from 'rxjs';
 
 import styles from '../Styles/Style_PlayingField';
 
+const subject = new Subject();
 
 const mockup = [
 	{

@@ -9,7 +9,7 @@ export default StyleSheet.create({
         //backgroundColor: 'grey',
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: '10%'
+        marginLeft: '10%',
 	},
 	modalContainer: {
 		width: width/1.5,
@@ -18,9 +18,10 @@ export default StyleSheet.create({
 		borderLeftWidth: 1,
 		borderLeftColor: 'black',
 		alignItems: 'center',
-		height: '100%',
-		borderTopColor: 'black',
-		borderTopWidth: 1
+		height: '98%',
+		marginTop: '4%',
+		borderBottomColor: 'black',
+		borderBottomWidth: 1
 	},
 	titlesContainer: {
 		//backgroundColor: 'pink',
@@ -42,5 +43,26 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		color: 'black',
 		fontSize: 16
+	},
+	headerOptions: {
+		flexDirection: 'row',
+		height: height/10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: height/10,
+		borderBottomColor: 'black',
+		borderBottomWidth: 1,
+	},
+	titlesTextHeader: {
+		color: 'black',
+		fontWeight: 'bold',
+		fontSize: 24
+	},
+	titlesContainerHeader: {
+		flex: 3,
+		marginLeft: '10%'
+	},
+	imageContainer: {
+		flex: 1
 	}
 });

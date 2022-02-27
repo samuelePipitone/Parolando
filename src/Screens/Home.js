@@ -14,9 +14,11 @@ import MyKeyboard from '../Custom components/MyKeyboard';
 /* 
 	NOTE:
 		-margine da togliere fisso e mettere variabile
+		-fontsize da mettere in percentuale e non fissi
+		-opzioni da rivedere e anche stile, ho fuckuppato un po'
 */
 
-export default function SecondScreen({ navigation }){
+export default function Home({ navigation }){
 
 	return(
 		<SafeAreaView style={styles.androidSafeArea}>

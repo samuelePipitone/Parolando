@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { TouchableOpacity, Dimensions, View, ScrollView, Modal, Text } from "react-native";
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 
 import styles from '../Styles/Style_Options'
 
@@ -22,12 +23,20 @@ export default function Options(){
 			>
 				<ScrollView contentContainerStyle ={styles.modalContainer}>
 
-					<TouchableOpacity style={styles.titlesContainer} onPress={() => {setModalVisible(false)}}>
-						<Text style={styles.titlesText}>BACK</Text>
-					</TouchableOpacity>
+					<View style={styles.headerOptions}>
+						<View style={styles.titlesContainerHeader}>
+							<Text style={styles.titlesTextHeader}>Parolando</Text>
+						</View>
+
+						<TouchableOpacity style={styles.imageContainer} onPress={() => {setModalVisible(false)}}>
+							<Feather name='x' size={width/10}/>
+						</TouchableOpacity>
+					</View>
 
 					<View style={styles.titlesContainer}>
-						<Text style={styles.titlesText}>Account</Text>
+						<View>
+							<Text style={styles.titlesText}>Account</Text>
+						</View>
 					</View>
 
 					<View style={styles.titlesContainer}>
