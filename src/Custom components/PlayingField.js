@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, FlatList, Text } from "react-native";
-import { Subject } from 'rxjs';
 
 import styles from '../Styles/Style_PlayingField';
-
-const subject = new Subject();
+import  { comunicationService } from '../Comunication';
 
 const mockup = [
 	{
@@ -39,12 +37,28 @@ const myKey = (item) => {
 };  
 
 export default function PlayingField(){
+
+	const [keyList, setKeyList] = useState([]);
+
+	useEffect(() => {
+		const subscription = comunicationService.onMessage().subscribe(key => {
+			if(key) {
+				setKeyList(keyList => [...keyList, key]);
+			} else{
+				setKeyList([]);
+			}
+		});
+
+		return subscription.unsubscribe;
+	}, []);
+
 	return(
 		<View style={styles.container}>
+
 			<View style={styles.blocks}>
 				<FlatList
 				horizontal={true}
-				data = {mockup}
+				data = {keyList}
 				renderItem = {({item}) => 
 					<View style={styles.singleBlock}>
 						<Text style={styles.textBlock}>{item.letter}</Text>
