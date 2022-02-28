@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text, Button } from "react-native";
+import { FlatList, View, Text, Button, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 
 import styles from '../Styles/Style_Keyboard';
 import { data1, data2, data3 } from '../data/KeyboardData';
@@ -11,8 +11,8 @@ const myKey = (item) => {
 
 export default function Keyboard(){
 
-	function sendMessage(){
-		comunicationService.sendMessage('A');
+	function sendMessage(key){
+		comunicationService.sendMessage(key);
 	}
 
 	function clearMessages(){
@@ -24,16 +24,17 @@ export default function Keyboard(){
 
           <View style={styles.row1}>
 
-			  <Button onPress={sendMessage} title="porcodio"/>
-
 			<FlatList
 			horizontal = {true}
 			data = {data1}
 			keyExtractor = {myKey}
 			renderItem = {({item}) => 
-					<View style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
+					<TouchableOpacity onPress={() => sendMessage(item.letter)}
+					style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
+
 						<Text style={styles.letterText}>{item.letter}</Text>
-					</View>
+
+					</TouchableOpacity>
 				}
 			contentContainerStyle = {styles.stileFlat}
 			/>
@@ -47,9 +48,12 @@ export default function Keyboard(){
 			data = {data2}
 			keyExtractor = {myKey}
 			renderItem = {({item}) => 
-					<View style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
+					<TouchableOpacity onPress={() => sendMessage(item.letter)}
+					style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
+
 						<Text style={styles.letterText}>{item.letter}</Text>
-					</View>
+						
+					</TouchableOpacity>
 				}
 			contentContainerStyle = {styles.stileFlat}
 			/>
@@ -63,9 +67,12 @@ export default function Keyboard(){
 			data = {data3}
 			keyExtractor = {myKey}
 			renderItem = {({item}) => 
-					<View style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
-						<Text style={styles.letterText}>{item.letter}</Text>
-					</View>
+				<TouchableOpacity onPress={() => sendMessage(item.letter)}
+				style={item.style === 'singleLetter' ? styles.singleLetter : styles.doubleLetter}>
+
+					<Text style={styles.letterText}>{item.letter}</Text>
+				
+				</TouchableOpacity>
 				}
 			contentContainerStyle = {styles.stileFlat}
 			/>

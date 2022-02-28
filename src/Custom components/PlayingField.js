@@ -38,12 +38,38 @@ const myKey = (item) => {
 
 export default function PlayingField(){
 
-	const [keyList, setKeyList] = useState([]);
+	const [keyList, setKeyList] = useState([
+		{
+			'letter': "",
+			'state': "nonIndovinato",
+			'id': 1
+		},
+		{
+			'letter': "",
+			'state': "Indovinato",
+			'id': 2
+		},
+		{
+			'letter': "",
+			'state': "Indovinato",
+			'id': 3
+		},
+		{
+			'letter': "",
+			'state': "Indovinato",
+			'id': 4
+		},
+		{
+			'letter': "",
+			'state': "Indovinato",
+			'id': 5
+		}
+	]);
 
 	useEffect(() => {
 		const subscription = comunicationService.onMessage().subscribe(key => {
 			if(key) {
-				setKeyList(keyList => [...keyList, key]);
+				updateData(key);
 			} else{
 				setKeyList([]);
 			}
@@ -51,6 +77,23 @@ export default function PlayingField(){
 
 		return subscription.unsubscribe;
 	}, []);
+
+	const updateData = (key) => {
+		const index = keyList.findIndex(item => item.id === key.id);
+
+		if(index === -1) return;
+
+		const item = keyList[index];
+
+		const updatedItem = {...item, letter: key.letter};
+
+		const updatedArray = keyList;
+
+		updatedArray[index] = updatedItem;
+		console.log(updatedArray)
+
+		setKeyList(updatedArray);
+	};
 
 	return(
 		<View style={styles.container}>

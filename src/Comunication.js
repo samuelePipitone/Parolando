@@ -11,7 +11,6 @@ export const comunicationService = {
 		subject.next({ 
 		letter: key,
 		id: i,
-		state: 'uknown'
 	 	}
 	 )},
     clearMessages: () => subject.next(),
