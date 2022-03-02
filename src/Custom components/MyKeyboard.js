@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text, Button, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
 
 import styles from '../Styles/Style_Keyboard';
 import { data1, data2, data3 } from '../data/KeyboardData';
