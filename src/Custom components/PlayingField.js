@@ -3,189 +3,29 @@ import { View, FlatList, Text } from "react-native";
 
 import styles from '../Styles/Style_PlayingField';
 import  { comunicationService } from '../Comunication';
+import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFieldData';
 
 let row = 1;
 
 let parola = "palle";
 
 const myKey = (item) => {
-	return item.id;
+	return item.id + (5 * (row-1));
 };  
 
 export default function PlayingField(){
 
-	const [keyList, setKeyList] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1,
-			'row': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2,
-			'row': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 3,
-			'row': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4,
-			'row': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5,
-			'row': 1
-		}
-	]);
+	const [keyList, setKeyList] = useState(field);
 
-	const [keyList2, setKeyList2] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2
-		},
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 3
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5
-		}
-	]);
+	const [keyList2, setKeyList2] = useState(field2);
 
-	const [keyList3, setKeyList3] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 3
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5
-		}
-	]);
+	const [keyList3, setKeyList3] = useState(field3);
 
-	const [keyList4, setKeyList4] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 3
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5
-		}
-	]);
+	const [keyList4, setKeyList4] = useState(field4);
 
-	const [keyList5, setKeyList5] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 3
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5
-		}
-	]);
+	const [keyList5, setKeyList5] = useState(field5);
 
-	const [keyList6, setKeyList6] = useState([
-		{
-			'letter': "",
-			'state': "nonIndovinato",
-			'id': 1
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 2
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 3
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 4
-		},
-		{
-			'letter': "",
-			'state': "NonIndovinato",
-			'id': 5
-		}
-	]);
+	const [keyList6, setKeyList6] = useState(field6);
 
 	useEffect(() => {
 		const subscription = comunicationService.onMessage().subscribe(key => {
@@ -311,7 +151,7 @@ export default function PlayingField(){
 						<Text style={styles.textBlock}>{item.letter}</Text>
 					</View>
 				}
-				keyExtractor = {myKey+5}
+				keyExtractor = {myKey}
 				/>
 			</View>
 
@@ -324,7 +164,7 @@ export default function PlayingField(){
 						<Text style={styles.textBlock}>{item.letter}</Text>
 					</View>
 				}
-				keyExtractor = {myKey+10}
+				keyExtractor = {myKey}
 				/>
 			</View>
 
@@ -337,7 +177,7 @@ export default function PlayingField(){
 						<Text style={styles.textBlock}>{item.letter}</Text>
 					</View>
 				}
-				keyExtractor = {myKey+15}
+				keyExtractor = {myKey}
 				/>
 			</View>
 
@@ -350,7 +190,7 @@ export default function PlayingField(){
 						<Text style={styles.textBlock}>{item.letter}</Text>
 					</View>
 				}
-				keyExtractor = {myKey+20}
+				keyExtractor = {myKey}
 				/>
 			</View>
 
@@ -363,7 +203,7 @@ export default function PlayingField(){
 						<Text style={styles.textBlock}>{item.letter}</Text>
 					</View>
 				}
-				keyExtractor = {myKey+25}
+				keyExtractor = {myKey}
 				/>
 			</View>
 
