@@ -101,7 +101,7 @@ export const data2 = [
 
 export const data3 = [
 	{
-		'letter': 'ENTER',
+		'letter': 'INVIO',
 		'style': 'doubleLetter',
 		'id': 20
 	},
@@ -141,7 +141,7 @@ export const data3 = [
 		'id': 27
 	},
 	{
-		'letter': 'BACK',
+		'letter': 'CANC',
 		'style': 'doubleLetter',
 		'id': 28
 	}

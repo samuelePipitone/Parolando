@@ -10,7 +10,7 @@ export const comunicationService = {
 
 		subject.next({ 
 		letter: key,
-		id: i,
+		pos: i
 	 	}
 	 )},
     clearMessages: () => subject.next(),

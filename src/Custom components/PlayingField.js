@@ -7,10 +7,10 @@ import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFi
 
 let row = 1;
 
-let parola = "palle";
+let wordle = "PALLE";
 
 const myKey = (item) => {
-	return item.id + (5 * (row-1));
+	return item.id;
 };  
 
 export default function PlayingField(){
@@ -30,7 +30,15 @@ export default function PlayingField(){
 	useEffect(() => {
 		const subscription = comunicationService.onMessage().subscribe(key => {
 			if(key) {
-				updateData(key);
+				if(key.letter === "INVIO"){
+					if(isRight()){
+						console.log("IS RIGHT");
+					} else{
+						row = row + 1;
+					}
+				} else{
+					updateData(key);
+				}
 			} else{
 				setKeyList([]);
 			}
@@ -42,7 +50,7 @@ export default function PlayingField(){
 	const updateData = (key) => {
 		switch(row){
 			case 1: {
-				const index = keyList.findIndex(item => item.id === key.id);
+				const index = keyList.findIndex(item => item.id === key.pos);
 
 				if(index === -1) return;
 		
@@ -55,7 +63,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 2: {
-				const index = keyList2.findIndex(item => item.id === key.id);
+				const index = keyList2.findIndex(item => item.id === key.pos - 1);
 
 				if(index === -1) return;
 		
@@ -68,52 +76,52 @@ export default function PlayingField(){
 				break;
 			};
 			case 3: {
-				const index = keyList3.findIndex(item => item.id === key.id);
+				const index = keyList3.findIndex(item => item.id === key.pos - 2);
 
 				if(index === -1) return;
 		
 				const item = keyList3[index];
 				const updatedItem = {...item, letter: key.letter};
-				const updatedArray = keyList;
+				const updatedArray = keyList3;
 				updatedArray[index] = updatedItem;
 		
 				setKeyList3([...updatedArray]);
 				break;
 			};
 			case 4: {
-				const index = keyList4.findIndex(item => item.id === key.id);
+				const index = keyList4.findIndex(item => item.id === key.pos - 3);
 
 				if(index === -1) return;
 		
 				const item = keyList4[index];
 				const updatedItem = {...item, letter: key.letter};
-				const updatedArray = keyList;
+				const updatedArray = keyList4;
 				updatedArray[index] = updatedItem;
 		
 				setKeyList4([...updatedArray]);
 				break;
 			};
 			case 5: {
-				const index = keyList5.findIndex(item => item.id === key.id);
+				const index = keyList5.findIndex(item => item.id === key.pos - 4);
 
 				if(index === -1) return;
 		
 				const item = keyList5[index];
 				const updatedItem = {...item, letter: key.letter};
-				const updatedArray = keyList;
+				const updatedArray = keyList5;
 				updatedArray[index] = updatedItem;
 		
 				setKeyList5([...updatedArray]);
 				break;
 			};
 			case 6: {
-				const index = keyList6.findIndex(item => item.id === key.id);
+				const index = keyList6.findIndex(item => item.id === key.pos - 5);
 
 				if(index === -1) return;
 		
 				const item = keyList6[index];
 				const updatedItem = {...item, letter: key.letter};
-				const updatedArray = keyList;
+				const updatedArray = keyList6;
 				updatedArray[index] = updatedItem;
 		
 				setKeyList6([...updatedArray]);
@@ -124,6 +132,36 @@ export default function PlayingField(){
 				break;
 			}
 		}
+	};
+
+	//return true if all letters are present
+	function rightLength() {
+		let i = 0;
+		for(let j = 0; j < 5; j++){
+			if(keyList[j].letter.length === 1){
+				i++
+			}
+		}
+		if(i === 5){
+			return true;
+		} else return false;
+	};
+	
+	//return true if daily word is right
+	function isRight() {
+
+		let trial = "";
+		if(rightLength()){
+
+			for(let j = 0; j<5; j++){
+				trial = trial.concat(keyList[j].letter);
+			}
+
+			if(trial === wordle){
+				return true;
+			} else return false;
+
+		} else return false; 
 	};
 
 	return(
