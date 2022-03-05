@@ -43,7 +43,7 @@ export default function Home({ navigation }){
 
 				<View style={styles.body}>
 
-					<PlayingField/>
+					<PlayingField myNavigation={navigation}/>
 
 				</View>
 

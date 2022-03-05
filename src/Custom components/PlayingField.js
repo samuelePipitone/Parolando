@@ -6,14 +6,14 @@ import  { comunicationService } from '../Comunication';
 import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFieldData';
 
 let row = 1;
-
+let offset = 0;
 let wordle = "PALLE";
 
 const myKey = (item) => {
 	return item.id;
 };  
 
-export default function PlayingField(){
+export default function PlayingField(myNavigation){
 
 	const [keyList, setKeyList] = useState(field);
 
@@ -28,18 +28,28 @@ export default function PlayingField(){
 	const [keyList6, setKeyList6] = useState(field6);
 
 	useEffect(() => {
+
 		const subscription = comunicationService.onMessage().subscribe(key => {
+
 			if(key) {
+
 				if(key.letter === "INVIO"){
+
+					offset++;
 					if(isRight()){
 						console.log("IS RIGHT");
 					} else{
-						row = row + 1;
+						row++;
 					}
-				} else{
+				} 
+				else if(key.letter === "CANC"){
+					offset++;
+				} 
+				else{
 					updateData(key);
 				}
-			} else{
+			} 
+			else{
 				setKeyList([]);
 			}
 		});
@@ -47,6 +57,7 @@ export default function PlayingField(){
 		return subscription.unsubscribe;
 	}, []);
 
+	//aggiorna la lettera nella giusta riga
 	const updateData = (key) => {
 		switch(row){
 			case 1: {
@@ -63,7 +74,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 2: {
-				const index = keyList2.findIndex(item => item.id === key.pos - 1);
+				const index = keyList2.findIndex(item => item.id === key.pos - offset);
 
 				if(index === -1) return;
 		
@@ -76,7 +87,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 3: {
-				const index = keyList3.findIndex(item => item.id === key.pos - 2);
+				const index = keyList3.findIndex(item => item.id === key.pos - offset);
 
 				if(index === -1) return;
 		
@@ -89,7 +100,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 4: {
-				const index = keyList4.findIndex(item => item.id === key.pos - 3);
+				const index = keyList4.findIndex(item => item.id === key.pos - offset);
 
 				if(index === -1) return;
 		
@@ -102,7 +113,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 5: {
-				const index = keyList5.findIndex(item => item.id === key.pos - 4);
+				const index = keyList5.findIndex(item => item.id === key.pos - offset);
 
 				if(index === -1) return;
 		
@@ -115,7 +126,7 @@ export default function PlayingField(){
 				break;
 			};
 			case 6: {
-				const index = keyList6.findIndex(item => item.id === key.pos - 5);
+				const index = keyList6.findIndex(item => item.id === key.pos - offset);
 
 				if(index === -1) return;
 		
@@ -128,40 +139,130 @@ export default function PlayingField(){
 				break;
 			};
 			default: {
-				//errorpage
+				myNavigation.navigate('Error');
 				break;
 			}
 		}
 	};
 
-	//return true if all letters are present
+	//ritorna true se la lunghezza della riga è corretta
 	function rightLength() {
-		let i = 0;
-		for(let j = 0; j < 5; j++){
-			if(keyList[j].letter.length === 1){
-				i++
-			}
-		}
+
+		let i = numberLetterRow();
 		if(i === 5){
 			return true;
 		} else return false;
 	};
 	
-	//return true if daily word is right
+	//ritorna true se la parola è azzeccata
 	function isRight() {
 
-		let trial = "";
 		if(rightLength()){
 
-			for(let j = 0; j<5; j++){
-				trial = trial.concat(keyList[j].letter);
-			}
-
+			let trial = buildString();
 			if(trial === wordle){
 				return true;
 			} else return false;
 
 		} else return false; 
+	};
+
+	// Capisce se la riga è tutta piena
+	function numberLetterRow() {
+		let i = 0;
+		switch(row){
+			case 1: {
+				for(let j = 0; j < 5; j++){
+					if(keyList[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+			case 2: {
+				for(let j = 0; j < 5; j++){
+					if(keyList2[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+			case 3: {
+				for(let j = 0; j < 5; j++){
+					if(keyList3[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+			case 4: {
+				for(let j = 0; j < 5; j++){
+					if(keyList4[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+			case 5: {
+				for(let j = 0; j < 5; j++){
+					if(keyList5[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+			case 6: {
+				for(let j = 0; j < 5; j++){
+					if(keyList6[j].letter.length === 1){
+						i++
+					}
+				}
+				return i;
+			}
+		}
+	};
+
+	//costruisce la stringa in base a quale riga appartiene
+	function buildString(){
+		let trial = "";
+		switch(row){
+			case 1: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList[j].letter);
+				}
+				return trial;
+			}
+			case 2: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList2[j].letter);
+				}
+				return trial;
+			}
+			case 3: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList3[j].letter);
+				}
+				return trial;
+			}
+			case 4: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList4[j].letter);
+				}
+				return trial;
+			}
+			case 5: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList5[j].letter);
+				}
+				return trial;
+			}
+			case 6: {
+				for(let j = 0; j<5; j++){
+					trial = trial.concat(keyList6[j].letter);
+				}
+				return trial;
+			}
+		}
 	};
 
 	return(
