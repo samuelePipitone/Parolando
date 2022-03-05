@@ -13,6 +13,9 @@ const myKey = (item) => {
 	return item.id;
 };  
 
+/*
+	TODO: riguarda la combo canc e invio -> da capire bene l'offset
+*/
 export default function PlayingField(myNavigation){
 
 	const [keyList, setKeyList] = useState(field);
@@ -27,12 +30,14 @@ export default function PlayingField(myNavigation){
 
 	const [keyList6, setKeyList6] = useState(field6);
 
+	//aggiorna dinamicamente la pagina
 	useEffect(() => {
 
 		const subscription = comunicationService.onMessage().subscribe(key => {
 
 			if(key) {
 
+				//CODICE QUANDO UTENTE CLICCA INVIO
 				if(key.letter === "INVIO"){
 
 					offset++;
@@ -42,9 +47,12 @@ export default function PlayingField(myNavigation){
 						row++;
 					}
 				} 
+				//CODICE QUANDO UTENTE CLICCA CANC
 				else if(key.letter === "CANC"){
 					offset++;
+					cancelRow();
 				} 
+				//CODICE QUANDO UTENTE CLICCA UN'ALTRA KEY
 				else{
 					updateData(key);
 				}
@@ -264,6 +272,74 @@ export default function PlayingField(myNavigation){
 			}
 		}
 	};
+
+	//Cancella completamente una riga
+	function cancelRow(){
+			offset--;
+			switch(row){
+				case 1: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList([...updatedArray]);
+					}
+				}
+				case 2: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList2[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList2;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList2([...updatedArray]);
+					}
+				}
+				case 3: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList3[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList3;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList3([...updatedArray]);
+					}
+				}
+				case 4: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList4[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList4;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList4([...updatedArray]);
+					}
+				}
+				case 5: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList5[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList5;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList5([...updatedArray]);
+					}
+				}
+				case 6: {
+					for(let i = 0; i < 5; i++){
+						const item = keyList6[i];
+						const updatedItem = {...item, letter: ""};
+						const updatedArray = keyList6;
+						updatedArray[i] = updatedItem;
+				
+						setKeyList6([...updatedArray]);
+					}
+				}
+			}
+			comunicationService.resetI(row);
+	}
 
 	return(
 		<View style={styles.container}>

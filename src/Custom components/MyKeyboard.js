@@ -15,10 +15,6 @@ export default function Keyboard(){
 		comunicationService.sendMessage(key);
 	}
 
-	function clearMessages(){
-		comunicationService.clearMessages();
-	}
-
     return(
         <View style={styles.container}>
 

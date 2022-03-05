@@ -14,5 +14,8 @@ export const comunicationService = {
 	 	}
 	 )},
     clearMessages: () => subject.next(),
-    onMessage: () => subject.asObservable()
+    onMessage: () => subject.asObservable(),
+	resetI: (row) => {
+		i = 0 + ((row - 1) * 5);
+	}
 };
