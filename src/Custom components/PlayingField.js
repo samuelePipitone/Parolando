@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList, Text, Modal, Dimensions, TouchableOpacity } from "react-native";
 
 import styles from '../Styles/Style_PlayingField';
 import  { comunicationService } from '../Comunication';
 import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFieldData';
+
+import Feather from 'react-native-vector-icons/Feather';
+
+var width = Dimensions.get('window').width; //full width
 
 let row = 1;
 let offset = 0;
@@ -16,7 +20,7 @@ const myKey = (item) => {
 
 /*
 	TODO: riguarda la combo canc e invio -> da capire bene l'offset
-	TODO: riguarda i colori, a volte non prende alcuni gialli
+	TODO: riguarda i colori, a volte non prende alcuni gialli (allep in palle)
 */
 export default function PlayingField(myNavigation){
 
@@ -31,6 +35,8 @@ export default function PlayingField(myNavigation){
 	const [keyList5, setKeyList5] = useState(field5);
 
 	const [keyList6, setKeyList6] = useState(field6);
+
+	const [modalVisible, setModalVisible] = useState(true);
 
 	//aggiorna dinamicamente la pagina in base al tasto cliccato
 	useEffect(() => {
@@ -48,7 +54,7 @@ export default function PlayingField(myNavigation){
 
 					switch(right){
 						case 1: {
-							console.log("IS RIGHT");
+							setModalVisible(true);
 							break;
 						}
 						case 0: {
@@ -531,6 +537,81 @@ export default function PlayingField(myNavigation){
 	//render grafico
 	return(
 		<View style={styles.container}>
+
+			<Modal
+			animationType = "none"
+			transparent = {true}
+			visible = {modalVisible}>
+
+				<View style={styles.modalContainer}>
+
+					<View style={styles.modalHeader}>
+						<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalVisible(false)}>
+							<Feather name='x' size={width/10}/>
+						</TouchableOpacity>
+					</View>
+
+					<View style={styles.modalBody}>
+
+						<View style={styles.modalBodyUp}>
+
+							<View style={styles.modalBodyUpHeader}>
+								<Text>Statistiche</Text>
+							</View>
+							<View style={styles.modalBodyUpBody}>
+
+								<View style={styles.modalBodyUpBodyLeft}>
+
+									<View style={styles.modalText}>
+										<Text>Partite giocate: </Text>
+									</View>
+
+									<View style={styles.modalText}>
+										<Text>% Parole indovinate:</Text>
+									</View>
+
+									<View style={styles.modalText}>
+										<Text>Serie di vittorie:</Text>
+									</View>
+
+									<View style={styles.modalText}>
+										<Text>Serie di vittorie massima:</Text>
+									</View>
+
+								</View>
+
+								<View style={styles.modalBodyUpBodyRight}>
+
+									<View style={styles.modalValue}>
+										<Text>0</Text>
+									</View>
+
+									<View style={styles.modalValue}>
+										<Text>0</Text>
+									</View>
+
+									<View style={styles.modalValue}>
+										<Text>0</Text>
+									</View>
+
+									<View style={styles.modalValue}>
+										<Text>0</Text>
+									</View>
+								</View>
+							</View>
+						</View>
+
+						<View style={styles.modalBodyDown}>
+
+						</View>
+					</View>
+
+					<View style={styles.modalFooter}>
+						
+					</View>
+
+				</View>
+			</Modal>
 
 			<View style={styles.blocks}>
 				<FlatList
