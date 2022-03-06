@@ -8,6 +8,7 @@ import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFi
 let row = 1;
 let offset = 0;
 let wordle = "PALLE";
+let currentLength = 0;
 
 const myKey = (item) => {
 	return item.id;
@@ -15,6 +16,7 @@ const myKey = (item) => {
 
 /*
 	TODO: riguarda la combo canc e invio -> da capire bene l'offset
+	TODO: riguarda i colori, a volte non prende alcuni gialli
 */
 export default function PlayingField(myNavigation){
 
@@ -30,7 +32,7 @@ export default function PlayingField(myNavigation){
 
 	const [keyList6, setKeyList6] = useState(field6);
 
-	//aggiorna dinamicamente la pagina
+	//aggiorna dinamicamente la pagina in base al tasto cliccato
 	useEffect(() => {
 
 		const subscription = comunicationService.onMessage().subscribe(key => {
@@ -40,17 +42,31 @@ export default function PlayingField(myNavigation){
 				//CODICE QUANDO UTENTE CLICCA INVIO
 				if(key.letter === "INVIO"){
 
+					currentLength = numberLetterRow();
 					offset++;
-					if(isRight()){
-						console.log("IS RIGHT");
-					} else{
-						row++;
+					let right = isRight(currentLength);
+
+					switch(right){
+						case 1: {
+							console.log("IS RIGHT");
+							break;
+						}
+						case 0: {
+							checkWord(currentLength);
+							row++;
+							break;
+						}
+						case -1: {
+							console.log("Lunghezza stringa errata");
+							offset++;
+							break;
+						}
 					}
 				} 
 				//CODICE QUANDO UTENTE CLICCA CANC
 				else if(key.letter === "CANC"){
-					offset++;
 					cancelRow();
+					offset++;
 				} 
 				//CODICE QUANDO UTENTE CLICCA UN'ALTRA KEY
 				else{
@@ -154,25 +170,23 @@ export default function PlayingField(myNavigation){
 	};
 
 	//ritorna true se la lunghezza della riga è corretta
-	function rightLength() {
-
-		let i = numberLetterRow();
+	function rightLength(i) {
 		if(i === 5){
 			return true;
 		} else return false;
 	};
 	
-	//ritorna true se la parola è azzeccata
-	function isRight() {
+	//ritorna 1 se parola corretta, 0 se parola non corretta, -1 se lunghezza sbagliata
+	function isRight(i) {
 
-		if(rightLength()){
+		if(rightLength(i)){
 
 			let trial = buildString();
 			if(trial === wordle){
-				return true;
-			} else return false;
+				return 1;
+			} else return 0;
 
-		} else return false; 
+		} else return -1; 
 	};
 
 	// Capisce se la riga è tutta piena
@@ -339,8 +353,182 @@ export default function PlayingField(myNavigation){
 				}
 			}
 			comunicationService.resetI(row);
+	};
+	
+	//Singolo blocco nella Flatlist
+	const Item = ({ letter, state }) => (
+		<View style={myStyle(state)}>
+			<Text style={styles.textBlock}>{letter}</Text>
+		</View>
+	);
+
+	//funzione che renderizza l'item con parametri dall'oggetto
+	const renderItem = ({ item }) => (
+		<Item letter={item.letter} state={item.state}/>
+	);
+
+	//prende lo stato e ritorna lo stile del singolo blocco
+	function myStyle( state ){
+		if(state === "indovinato") {
+			return styles.singleBlockRight;
+		} else if (state === "presente") {
+			return styles.singleBlockAlmost;
+		} else return styles.singleBlock;
+	};
+
+	//controlla le lettere della parola inserita dall'utente
+	function checkWord(i){
+
+		if(rightLength(i)){
+
+			switch(row){
+				case 1: {
+					for(let j = 0; j < 5; j++){
+						if(keyList[j].letter === wordle.charAt(j)){
+							const item = keyList[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList;
+							updatedArray[j] = updatedItem;
+					
+							setKeyList([...updatedArray]);
+		
+						} else if(checkLetter(keyList[j].letter) !== -1){
+							let k = checkLetter(keyList[j].letter);
+							const item = keyList[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList([...updatedArray]);
+						} 
+					}
+					break;
+				}
+				case 2: {
+					for(let j = 0; j < 5; j++){
+						if(keyList2[j].letter === wordle.charAt(j)){
+							const item = keyList2[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList2;
+							updatedArray[j] = updatedItem;
+
+							setKeyList2([...updatedArray]);
+		
+						} else if(checkLetter(keyList2[j].letter) !== -1){
+							let k = checkLetter(keyList2[j].letter);
+							const item = keyList2[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList2;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList2([...updatedArray]);
+						} 
+					} 
+					break;
+				}
+				case 3: {
+					for(let j = 0; j < 5; j++){
+						if(keyList3[j].letter === wordle.charAt(j)){
+							const item = keyList3[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList3;
+							updatedArray[j] = updatedItem;
+					
+							setKeyList3([...updatedArray]);3
+		
+						} else if(checkLetter(keyList3[j].letter) !== -1){
+							let k = checkLetter(keyList3[j].letter);
+							const item = keyList3[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList3;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList3([...updatedArray]);
+						} 
+					}
+					break;
+				}
+				case 4: {
+					for(let j = 0; j < 5; j++){
+						if(keyList4[j].letter === wordle.charAt(j)){
+							const item = keyList4[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList4;
+							updatedArray[j] = updatedItem;
+					
+							setKeyList4([...updatedArray]);
+		
+						} else if(checkLetter(keyList4[j].letter) !== -1){
+							let k = checkLetter(keyList4[j].letter);
+							const item = keyList4[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList4;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList4([...updatedArray]);
+						} 
+					}
+					break;
+				}
+				case 5: {
+					for(let j = 0; j < 5; j++){
+						if(keyList5[j].letter === wordle.charAt(j)){
+							const item = keyList5[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList5;
+							updatedArray[j] = updatedItem;
+					
+							setKeyList5([...updatedArray]);
+		
+						} else if(checkLetter(keyList5[j].letter) !== -1){
+							let k = checkLetter(keyList5[j].letter);
+							const item = keyList5[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList5;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList5([...updatedArray]);
+						} 
+					}
+					break;
+				}
+				case 6: {
+					for(let j = 0; j < 5; j++){
+						if(keyList6[j].letter === wordle.charAt(j)){
+							const item = keyList6[j];
+							const updatedItem = {...item, state: "indovinato"};
+							const updatedArray = keyList6;
+							updatedArray[j] = updatedItem;
+					
+							setKeyList6([...updatedArray]);
+		
+						} else if(checkLetter(keyList6[j].letter) !== -1){
+							let k = checkLetter(keyList6[j].letter);
+							const item = keyList6[k];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList6;
+							updatedArray[k] = updatedItem;
+					
+							setKeyList6([...updatedArray]);
+						} 
+					}
+					break;
+				}
+			}
+		} 
+	};
+
+	//ritorna la posizione di una lettera nella wordle, -1 se non presente
+	function checkLetter(l) {
+		for(let i = 0; i < 5; i++){
+			if(l === wordle.charAt(i)){
+				return i;
+			}
+		}
+		return -1;
 	}
 
+	//render grafico
 	return(
 		<View style={styles.container}>
 
@@ -348,12 +536,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList}
 				/>
 			</View>
 
@@ -361,12 +546,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList2}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList2}
 				/>
 			</View>
 
@@ -374,12 +556,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList3}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList3}
 				/>
 			</View>
 
@@ -387,12 +566,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList4}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList4}
 				/>
 			</View>
 
@@ -400,12 +576,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList5}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList5}
 				/>
 			</View>
 
@@ -413,12 +586,9 @@ export default function PlayingField(myNavigation){
 				<FlatList
 				horizontal={true}
 				data = {keyList6}
-				renderItem = {({item}) => 
-					<View style={styles.singleBlock}>
-						<Text style={styles.textBlock}>{item.letter}</Text>
-					</View>
-				}
+				renderItem = {renderItem}
 				keyExtractor = {myKey}
+				extraData={keyList6}
 				/>
 			</View>
 

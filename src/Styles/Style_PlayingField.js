@@ -11,12 +11,33 @@ export default StyleSheet.create({
 	},
     blocks: {
         flex: 1,
-        //backgroundColor: 'black',
         margin: 1,
         alignItems: 'center'
     },
     singleBlock: {
         backgroundColor: 'grey',
+        width: width/6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 1,
+        marginTop: '5%',
+        marginBottom: '5%',
+		marginRight: 2,
+		borderRadius: 1
+    },
+	singleBlockAlmost: {
+        backgroundColor: 'yellow',
+        width: width/6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 1,
+        marginTop: '5%',
+        marginBottom: '5%',
+		marginRight: 2,
+		borderRadius: 1
+    },
+	singleBlockRight: {
+        backgroundColor: 'green',
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
