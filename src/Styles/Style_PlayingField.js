@@ -115,8 +115,52 @@ export default StyleSheet.create({
 		flex: 1,
 		backgroundColor: 'brown'
 	},
+	modalBodyDownUp:{
+		flex: 1,
+		backgroundColor: 'grey'
+	},
+	modalBodyDownDown:{
+		flex: 6,
+		backgroundColor: 'yellow',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
 	modalFooter:{
-		backgroundColor: 'black',
-		flex: 4
+		backgroundColor: 'grey',
+		flex: 4,
+		flexDirection: 'row'
+	},
+	modalFooterLeft:{
+		backgroundColor: 'orange',
+		flex: 1,
+		borderRightColor: 'black',
+		borderRightWidth: 1,
+		marginTop:'3%',
+		marginBottom: '3%'
+	},
+	modalFooterLeftTop:{
+		flex: 2,
+		backgroundColor: 'yellow',
+		marginTop: '6%'
+	},
+	modalFooterLeftBottom:{
+		flex: 6,
+		backgroundColor: 'white'
+	},
+	modalFooterRight:{
+		backgroundColor: 'brown',
+		flex: 1,
+		marginTop:'4%',
+		marginBottom: '4%',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	button:{
+		borderRadius: 5,
+		backgroundColor: 'green',
+		width: width/3,
+		height: height/14,
+		alignItems: 'center',
+		justifyContent: 'center'
 	}
 });

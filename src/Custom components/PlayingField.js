@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList, Text, Modal, Dimensions, TouchableOpacity } from "react-native";
+import { View, FlatList, Text, Modal,
+	 Dimensions, TouchableOpacity, Button } from "react-native";
 
 import styles from '../Styles/Style_PlayingField';
 import  { comunicationService } from '../Comunication';
@@ -36,7 +37,7 @@ export default function PlayingField(myNavigation){
 
 	const [keyList6, setKeyList6] = useState(field6);
 
-	const [modalVisible, setModalVisible] = useState(true);
+	const [modalVisible, setModalVisible] = useState(false);
 
 	//aggiorna dinamicamente la pagina in base al tasto cliccato
 	useEffect(() => {
@@ -603,11 +604,34 @@ export default function PlayingField(myNavigation){
 
 						<View style={styles.modalBodyDown}>
 
+							<View style={styles.modalBodyDownUp}>
+								<Text>Titolo</Text>
+							</View>
+
+							<View style={styles.modalBodyDownDown}>
+								<Text>GRAFICO</Text>
+							</View>
 						</View>
 					</View>
 
 					<View style={styles.modalFooter}>
-						
+
+						<View style={styles.modalFooterLeft}>
+							
+							<View style={styles.modalFooterLeftTop}>
+								<Text>Prossima parola in:</Text>
+							</View>
+
+							<View style={styles.modalFooterLeftBottom}>
+								<Text>1 giorno</Text>
+							</View>
+						</View>
+
+						<View style={styles.modalFooterRight}>
+							<TouchableOpacity style={styles.button}>
+								<Text>Condividi</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 
 				</View>
