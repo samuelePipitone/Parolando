@@ -3,7 +3,8 @@
     "name": "Parolando",
     "owner": "ssm_team",
     "slug": "Parolando",
-    "version": "2.0.0",
+    "version": "2.0.1",
+	"icon": "src/images/wordlegame.png",
     "assetBundlePatterns": [
       "**/*"
     ],

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, Text, Modal,
-	 Dimensions, TouchableOpacity, Button } from "react-native";
+	 Dimensions, TouchableOpacity } from "react-native";
 
 import styles from '../Styles/Style_PlayingField';
 import  { comunicationService } from '../Comunication';
@@ -21,7 +21,7 @@ const myKey = (item) => {
 
 /*
 	TODO: riguarda la combo canc e invio -> da capire bene l'offset
-	TODO: riguarda i colori, a volte non prende alcuni gialli (allep in palle)
+	TODO: riguarda i colori, a volte non prende alcuni gialli (allep)(marea)
 */
 export default function PlayingField(myNavigation){
 
@@ -97,9 +97,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList([...updatedArray]);
 				break;
@@ -110,9 +113,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList2[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList2[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList2;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList2([...updatedArray]);
 				break;
@@ -123,9 +129,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList3[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList3[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList3;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList3([...updatedArray]);
 				break;
@@ -136,9 +145,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList4[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList4[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList4;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList4([...updatedArray]);
 				break;
@@ -149,9 +161,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList5[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList5[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList5;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList5([...updatedArray]);
 				break;
@@ -162,9 +177,12 @@ export default function PlayingField(myNavigation){
 				if(index === -1) return;
 		
 				const item = keyList6[index];
-				const updatedItem = {...item, letter: key.letter};
+				const previousItem = keyList6[index - 1];
+				const updatedItem = {...item, letter: key.letter, selected: true};
+				const updatedPreviousItem = {...previousItem, selected: false};
 				const updatedArray = keyList6;
 				updatedArray[index] = updatedItem;
+				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList6([...updatedArray]);
 				break;
@@ -363,25 +381,33 @@ export default function PlayingField(myNavigation){
 	};
 	
 	//Singolo blocco nella Flatlist
-	const Item = ({ letter, state }) => (
-		<View style={myStyle(state)}>
+	const Item = ({ letter, state, selected }) => (
+		<View style={myStyle(state, selected)}>
 			<Text style={styles.textBlock}>{letter}</Text>
 		</View>
 	);
 
 	//funzione che renderizza l'item con parametri dall'oggetto
 	const renderItem = ({ item }) => (
-		<Item letter={item.letter} state={item.state}/>
+		<Item letter={item.letter} state={item.state} selected={item.selected}/>
 	);
 
 	//prende lo stato e ritorna lo stile del singolo blocco
-	function myStyle( state ){
-		if(state === "indovinato") {
-			return styles.singleBlockRight;
-		} else if (state === "presente") {
-			return styles.singleBlockAlmost;
-		} else return styles.singleBlock;
-	};
+	function myStyle( state, selected ){
+		if(selected){
+			if(state === "indovinato") {
+				return styles.singleBlockRightSelected;
+			} else if (state === "presente") {
+				return styles.singleBlockAlmostSelected;
+			} else return styles.singleBlockSelected;
+		} else {
+			if(state === "indovinato") {
+				return styles.singleBlockRight;
+			} else if (state === "presente") {
+				return styles.singleBlockAlmost;
+			} else return styles.singleBlock;
+		}
+	}; 
 
 	//controlla le lettere della parola inserita dall'utente
 	function checkWord(i){
@@ -391,7 +417,9 @@ export default function PlayingField(myNavigation){
 			switch(row){
 				case 1: {
 					for(let j = 0; j < 5; j++){
+
 						if(keyList[j].letter === wordle.charAt(j)){
+
 							const item = keyList[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList;
@@ -400,13 +428,18 @@ export default function PlayingField(myNavigation){
 							setKeyList([...updatedArray]);
 		
 						} else if(checkLetter(keyList[j].letter) !== -1){
-							let k = checkLetter(keyList[j].letter);
-							const item = keyList[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList;
-							updatedArray[k] = updatedItem;
-					
-							setKeyList([...updatedArray]);
+
+							let k = checkLetter2(keyList[j].letter,
+								keyList[j].visited);
+
+							if(k === 0){
+								const item = keyList[k];
+								const updatedItem = {...item, state: "presente", visited: true};
+								const updatedArray = keyList;
+								updatedArray[k] = updatedItem;
+						
+								setKeyList([...updatedArray]);
+							}
 						} 
 					}
 					break;
@@ -525,11 +558,22 @@ export default function PlayingField(myNavigation){
 		} 
 	};
 
-	//ritorna la posizione di una lettera nella wordle, -1 se non presente
+	//ritorna 1 se presente, -1 se non presente
 	function checkLetter(l) {
 		for(let i = 0; i < 5; i++){
-			if(l === wordle.charAt(i)){
-				return i;
+			if(l === wordle.charAt(i)){ //QUESTA E LA POSIZIONE DELLA LETTERA NELLA TUA PAROLA RINCOGLIONITO
+				return 0;
+			}
+		}
+		return -1;
+	}
+
+	function checkLetter2(l, visited) {
+		for(let i = 0; i < 5; i++){
+			if(!visited){
+				if(l === wordle.charAt(i)){ 
+					return 0;
+				}
 			}
 		}
 		return -1;
