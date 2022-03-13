@@ -63,13 +63,13 @@ export default StyleSheet.create({
 		borderWidth: 1
 	},
 	modalHeader:{
-		backgroundColor: 'red',
+		//backgroundColor: 'red',
 		flex: 1.5,
 		alignItems: 'flex-end'
 	},
 	modalClickHeader:{
 		width: width/10,
-		backgroundColor: 'yellow'
+		//backgroundColor: 'yellow'
 	},
 	modalBody:{
 		backgroundColor: 'green',

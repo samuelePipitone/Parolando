@@ -8,7 +8,7 @@ import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFi
 
 import Feather from 'react-native-vector-icons/Feather';
 
-var width = Dimensions.get('window').width; //full width
+var width = Dimensions.get('window').width;
 
 let row = 1;
 let currentLength = 0;
@@ -79,11 +79,16 @@ export default function PlayingField(myNavigation){
 							break;
 						}
 						case 0: {
-							checkWord(currentLength);
-							updateRow();
-							row++;
-							puntatore = 0;
-							break;
+							if(row < 6){
+								checkWord(currentLength);
+								updateRow();
+								row++;
+								puntatore = 0;
+								break;
+							} else {
+								setModalVisible(true);
+								break;
+							}
 						}
 						case -1: {
 							console.log("Lunghezza stringa errata");
@@ -355,14 +360,25 @@ export default function PlayingField(myNavigation){
 	function isRight(i) {
 
 		if(rightLength(i)){
-
 			let trial = buildString();
-			if(trial === wordle){
+			let word = buildWordle();
+			console.log(trial)
+			console.log(word)
+			if(trial === word){
 				return 1;
 			} else return 0;
 
 		} else return -1; 
 	};
+
+	//costruisce la wordle
+	const buildWordle = () => {
+		let word = "";
+		for(let i = 0; i < 5; i++){
+			word = word.concat(wordle[i].letter);
+		}
+		return word;
+	}
 
 	// Capisce se la riga è tutta piena
 	function numberLetterRow() {
