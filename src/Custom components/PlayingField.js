@@ -11,17 +11,17 @@ import Feather from 'react-native-vector-icons/Feather';
 var width = Dimensions.get('window').width; //full width
 
 let row = 1;
-let offset = 0;
 let wordle = "PALLE";
 let currentLength = 0;
+let puntatore = 0;
 
 const myKey = (item) => {
 	return item.id;
 };  
 
 /*
-	TODO: riguarda la combo canc e invio -> da capire bene l'offset
 	TODO: riguarda i colori, a volte non prende alcuni gialli (allep)(marea)
+	TODO: puntatore arancione da fixare
 */
 export default function PlayingField(myNavigation){
 
@@ -50,7 +50,6 @@ export default function PlayingField(myNavigation){
 				if(key.letter === "INVIO"){
 
 					currentLength = numberLetterRow();
-					offset++;
 					let right = isRight(currentLength);
 
 					switch(right){
@@ -61,19 +60,18 @@ export default function PlayingField(myNavigation){
 						case 0: {
 							checkWord(currentLength);
 							row++;
+							puntatore = 0;
 							break;
 						}
 						case -1: {
 							console.log("Lunghezza stringa errata");
-							offset++;
 							break;
 						}
 					}
 				} 
 				//CODICE QUANDO UTENTE CLICCA CANC
 				else if(key.letter === "CANC"){
-					cancelRow();
-					offset++;
+					cancelKey();
 				} 
 				//CODICE QUANDO UTENTE CLICCA UN'ALTRA KEY
 				else{
@@ -92,9 +90,8 @@ export default function PlayingField(myNavigation){
 	const updateData = (key) => {
 		switch(row){
 			case 1: {
-				const index = keyList.findIndex(item => item.id === key.pos);
-
-				if(index === -1) return;
+				if(puntatore < 5){
+				const index = puntatore;
 		
 				const item = keyList[index];
 				const previousItem = keyList[index - 1];
@@ -105,88 +102,112 @@ export default function PlayingField(myNavigation){
 				updatedArray[index - 1] = updatedPreviousItem;
 		
 				setKeyList([...updatedArray]);
+				puntatore++;
 				break;
+				} else {
+					return;
+				}
+
 			};
 			case 2: {
-				const index = keyList2.findIndex(item => item.id === key.pos - offset);
-
-				if(index === -1) return;
-		
-				const item = keyList2[index];
-				const previousItem = keyList2[index - 1];
-				const updatedItem = {...item, letter: key.letter, selected: true};
-				const updatedPreviousItem = {...previousItem, selected: false};
-				const updatedArray = keyList2;
-				updatedArray[index] = updatedItem;
-				updatedArray[index - 1] = updatedPreviousItem;
-		
-				setKeyList2([...updatedArray]);
-				break;
-			};
+				if(puntatore < 5){
+					const index = puntatore;
+			
+					const item = keyList2[index];
+					const previousItem = keyList2[index - 1];
+					const updatedItem = {...item, letter: key.letter, selected: true};
+					const updatedPreviousItem = {...previousItem, selected: false};
+					const updatedArray = keyList2;
+					updatedArray[index] = updatedItem;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList2([...updatedArray]);
+					puntatore++;
+					break;
+					} else {
+						return;
+					}
+	
+				};
 			case 3: {
-				const index = keyList3.findIndex(item => item.id === key.pos - offset);
-
-				if(index === -1) return;
-		
-				const item = keyList3[index];
-				const previousItem = keyList3[index - 1];
-				const updatedItem = {...item, letter: key.letter, selected: true};
-				const updatedPreviousItem = {...previousItem, selected: false};
-				const updatedArray = keyList3;
-				updatedArray[index] = updatedItem;
-				updatedArray[index - 1] = updatedPreviousItem;
-		
-				setKeyList3([...updatedArray]);
-				break;
-			};
+				if(puntatore < 5){
+					const index = puntatore;
+			
+					const item = keyList3[index];
+					const previousItem = keyList3[index - 1];
+					const updatedItem = {...item, letter: key.letter, selected: true};
+					const updatedPreviousItem = {...previousItem, selected: false};
+					const updatedArray = keyList3;
+					updatedArray[index] = updatedItem;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList3([...updatedArray]);
+					puntatore++;
+					break;
+					} else {
+						return;
+					}
+	
+				};
 			case 4: {
-				const index = keyList4.findIndex(item => item.id === key.pos - offset);
-
-				if(index === -1) return;
-		
-				const item = keyList4[index];
-				const previousItem = keyList4[index - 1];
-				const updatedItem = {...item, letter: key.letter, selected: true};
-				const updatedPreviousItem = {...previousItem, selected: false};
-				const updatedArray = keyList4;
-				updatedArray[index] = updatedItem;
-				updatedArray[index - 1] = updatedPreviousItem;
-		
-				setKeyList4([...updatedArray]);
-				break;
-			};
+				if(puntatore < 5){
+					const index = puntatore;
+			
+					const item = keyList4[index];
+					const previousItem = keyList4[index - 1];
+					const updatedItem = {...item, letter: key.letter, selected: true};
+					const updatedPreviousItem = {...previousItem, selected: false};
+					const updatedArray = keyList4;
+					updatedArray[index] = updatedItem;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList4([...updatedArray]);
+					puntatore++;
+					break;
+					} else {
+						return;
+					}
+	
+				};
 			case 5: {
-				const index = keyList5.findIndex(item => item.id === key.pos - offset);
-
-				if(index === -1) return;
-		
-				const item = keyList5[index];
-				const previousItem = keyList5[index - 1];
-				const updatedItem = {...item, letter: key.letter, selected: true};
-				const updatedPreviousItem = {...previousItem, selected: false};
-				const updatedArray = keyList5;
-				updatedArray[index] = updatedItem;
-				updatedArray[index - 1] = updatedPreviousItem;
-		
-				setKeyList5([...updatedArray]);
-				break;
-			};
+				if(puntatore < 5){
+					const index = puntatore;
+			
+					const item = keyList5[index];
+					const previousItem = keyList5[index - 1];
+					const updatedItem = {...item, letter: key.letter, selected: true};
+					const updatedPreviousItem = {...previousItem, selected: false};
+					const updatedArray = keyList5;
+					updatedArray[index] = updatedItem;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList5([...updatedArray]);
+					puntatore++;
+					break;
+					} else {
+						return;
+					}
+	
+				};
 			case 6: {
-				const index = keyList6.findIndex(item => item.id === key.pos - offset);
-
-				if(index === -1) return;
-		
-				const item = keyList6[index];
-				const previousItem = keyList6[index - 1];
-				const updatedItem = {...item, letter: key.letter, selected: true};
-				const updatedPreviousItem = {...previousItem, selected: false};
-				const updatedArray = keyList6;
-				updatedArray[index] = updatedItem;
-				updatedArray[index - 1] = updatedPreviousItem;
-		
-				setKeyList6([...updatedArray]);
-				break;
-			};
+				if(puntatore < 5){
+					const index = puntatore;
+			
+					const item = keyList6[index];
+					const previousItem = keyList6[index - 1];
+					const updatedItem = {...item, letter: key.letter, selected: true};
+					const updatedPreviousItem = {...previousItem, selected: false};
+					const updatedArray = keyList6;
+					updatedArray[index] = updatedItem;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList6([...updatedArray]);
+					puntatore++;
+					break;
+					} else {
+						return;
+					}
+				};
 			default: {
 				myNavigation.navigate('Error');
 				break;
@@ -312,73 +333,108 @@ export default function PlayingField(myNavigation){
 		}
 	};
 
-	//Cancella completamente una riga
-	function cancelRow(){
-			offset--;
-			switch(row){
-				case 1: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList([...updatedArray]);
-					}
-				}
-				case 2: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList2[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList2;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList2([...updatedArray]);
-					}
-				}
-				case 3: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList3[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList3;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList3([...updatedArray]);
-					}
-				}
-				case 4: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList4[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList4;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList4([...updatedArray]);
-					}
-				}
-				case 5: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList5[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList5;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList5([...updatedArray]);
-					}
-				}
-				case 6: {
-					for(let i = 0; i < 5; i++){
-						const item = keyList6[i];
-						const updatedItem = {...item, letter: ""};
-						const updatedArray = keyList6;
-						updatedArray[i] = updatedItem;
-				
-						setKeyList6([...updatedArray]);
-					}
+	//Cancella una lettera
+	function cancelKey(){
+
+		switch(row){
+			case 1: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
 				}
 			}
-			comunicationService.resetI(row);
-	};
+			case 2: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList2[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList2;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList2([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
+				}
+			}
+			case 3: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList3[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList3;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList3([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
+				}
+			}
+			case 4: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList4[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList4;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList4([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
+				}
+			}
+			case 5: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList5[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList5;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList5([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
+				}
+			}
+			case 6: {
+				if(puntatore > 0){
+					const index = puntatore;
+			
+					const previousItem = keyList6[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedArray = keyList6;
+					updatedArray[index - 1] = updatedPreviousItem;
+			
+					setKeyList6([...updatedArray]);
+					puntatore--;
+					break;
+				} else {
+					break;
+				}
+			}
+		}
+	}
 	
 	//Singolo blocco nella Flatlist
 	const Item = ({ letter, state, selected }) => (
