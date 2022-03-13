@@ -53,10 +53,10 @@ export default StyleSheet.create({
 		fontWeight: 'bold'
     },
 	modalContainer: {	
-		backgroundColor: 'yellow',
+		backgroundColor: 'white',
 		flex: 1,
-		marginRight: width/15,
-		marginLeft: width/15,
+		marginRight: width/35,
+		marginLeft: width/35,
 		marginTop: height/8,
 		marginBottom: height/(2,5),
 		borderColor: 'black',
@@ -72,26 +72,28 @@ export default StyleSheet.create({
 		//backgroundColor: 'yellow'
 	},
 	modalBody:{
-		backgroundColor: 'green',
+		//backgroundColor: 'green',
 		flex: 10,
 		flexDirection: 'row'
 	},
 	modalBodyUp:{
 		flex: 1,
-		backgroundColor: 'pink'
+		//backgroundColor: 'pink'
 	},
 	modalBodyUpHeader:{
 		flex: 1,
-		backgroundColor: 'green'
+		//backgroundColor: 'green',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	modalBodyUpBody:{
 		flex: 6,
-		backgroundColor: 'yellow',
+		//backgroundColor: 'yellow',
 		flexDirection: 'row'
 	},
 	modalBodyUpBodyLeft:{
 		flex: 6,
-		backgroundColor: 'pink',
+		//backgroundColor: 'pink',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -113,25 +115,29 @@ export default StyleSheet.create({
 	},
 	modalBodyDown:{
 		flex: 1,
-		backgroundColor: 'brown'
+		//backgroundColor: 'brown'
 	},
 	modalBodyDownUp:{
 		flex: 1,
-		backgroundColor: 'grey'
-	},
-	modalBodyDownDown:{
-		flex: 6,
-		backgroundColor: 'yellow',
+		//backgroundColor: 'grey',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
+	modalBodyDownDown:{
+		flex: 6,
+		//backgroundColor: 'yellow',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderLeftColor: 'black',
+		borderLeftWidth: 1,
+	},
 	modalFooter:{
-		backgroundColor: 'grey',
+		//backgroundColor: 'grey',
 		flex: 4,
 		flexDirection: 'row'
 	},
 	modalFooterLeft:{
-		backgroundColor: 'orange',
+		//backgroundColor: 'orange',
 		flex: 1,
 		borderRightColor: 'black',
 		borderRightWidth: 1,
@@ -140,15 +146,17 @@ export default StyleSheet.create({
 	},
 	modalFooterLeftTop:{
 		flex: 2,
-		backgroundColor: 'yellow',
+		//backgroundColor: 'yellow',
 		marginTop: '6%'
 	},
 	modalFooterLeftBottom:{
 		flex: 6,
-		backgroundColor: 'white'
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	modalFooterRight:{
-		backgroundColor: 'brown',
+		//backgroundColor: 'brown',
 		flex: 1,
 		marginTop:'4%',
 		marginBottom: '4%',
@@ -161,7 +169,8 @@ export default StyleSheet.create({
 		width: width/3,
 		height: height/14,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		flexDirection: 'row',
 	},
 	singleBlockRightSelected:{
 		backgroundColor: 'green',
@@ -201,5 +210,28 @@ export default StyleSheet.create({
 		borderRadius: 1,
 		borderWidth: 2,
 		borderColor: 'orange'
+	},
+	//----TESTO-----
+	modalTitolo: {
+		fontWeight: 'bold',
+		fontSize: width/18
+	},
+	modalStatText: {
+		fontSize: width/28,
+		fontWeight: '400'
+	},
+	modalStatNumbers: {
+		marginRight: '80%',
+		fontWeight: '600',
+		fontSize: width/25
+	},
+	modalTitoletto: {
+		alignSelf: 'center',
+		fontWeight: '600',
+		fontSize: width/26
+	},
+	modalButtonText: {
+		fontWeight: '600',
+		fontSize: width/28,
 	}
 });

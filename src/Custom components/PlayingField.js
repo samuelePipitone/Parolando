@@ -7,6 +7,7 @@ import  { comunicationService } from '../Comunication';
 import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFieldData';
 
 import Feather from 'react-native-vector-icons/Feather';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 var width = Dimensions.get('window').width;
 
@@ -56,6 +57,7 @@ export default function PlayingField(myNavigation){
 		}
 	]);
 
+	//ritorna l'id della key, usato come chiave
 	const myKey = (item) => {
 		return item.id;
 	};  
@@ -362,8 +364,6 @@ export default function PlayingField(myNavigation){
 		if(rightLength(i)){
 			let trial = buildString();
 			let word = buildWordle();
-			console.log(trial)
-			console.log(word)
 			if(trial === word){
 				return 1;
 			} else return 0;
@@ -931,7 +931,8 @@ export default function PlayingField(myNavigation){
 			<Modal
 			animationType = "none"
 			transparent = {true}
-			visible = {modalVisible}>
+			visible = {modalVisible}
+			>
 
 				<View style={styles.modalContainer}>
 
@@ -946,26 +947,26 @@ export default function PlayingField(myNavigation){
 						<View style={styles.modalBodyUp}>
 
 							<View style={styles.modalBodyUpHeader}>
-								<Text>Statistiche</Text>
+								<Text style={styles.modalTitolo}>Statistiche:</Text>
 							</View>
 							<View style={styles.modalBodyUpBody}>
 
 								<View style={styles.modalBodyUpBodyLeft}>
 
 									<View style={styles.modalText}>
-										<Text>Partite giocate: </Text>
+										<Text style={styles.modalStatText}>Partite giocate: </Text>
 									</View>
 
 									<View style={styles.modalText}>
-										<Text>% Parole indovinate:</Text>
+										<Text style={styles.modalStatText}>% Parole indovinate:</Text>
 									</View>
 
 									<View style={styles.modalText}>
-										<Text>Serie di vittorie:</Text>
+										<Text style={styles.modalStatText}>Serie di vittorie:</Text>
 									</View>
 
 									<View style={styles.modalText}>
-										<Text>Serie di vittorie massima:</Text>
+										<Text style={styles.modalStatText}>Serie vitt. massima:</Text>
 									</View>
 
 								</View>
@@ -973,19 +974,19 @@ export default function PlayingField(myNavigation){
 								<View style={styles.modalBodyUpBodyRight}>
 
 									<View style={styles.modalValue}>
-										<Text>0</Text>
+										<Text style={styles.modalStatNumbers}>0</Text>
 									</View>
 
 									<View style={styles.modalValue}>
-										<Text>0</Text>
+										<Text style={styles.modalStatNumbers}>0</Text>
 									</View>
 
 									<View style={styles.modalValue}>
-										<Text>0</Text>
+										<Text style={styles.modalStatNumbers}>0</Text>
 									</View>
 
 									<View style={styles.modalValue}>
-										<Text>0</Text>
+										<Text style={styles.modalStatNumbers}>0</Text>
 									</View>
 								</View>
 							</View>
@@ -994,7 +995,7 @@ export default function PlayingField(myNavigation){
 						<View style={styles.modalBodyDown}>
 
 							<View style={styles.modalBodyDownUp}>
-								<Text>Titolo</Text>
+								<Text style={styles.modalTitolo}>Titolo</Text>
 							</View>
 
 							<View style={styles.modalBodyDownDown}>
@@ -1008,7 +1009,7 @@ export default function PlayingField(myNavigation){
 						<View style={styles.modalFooterLeft}>
 							
 							<View style={styles.modalFooterLeftTop}>
-								<Text>Prossima parola in:</Text>
+								<Text style={styles.modalTitoletto}>Prossima parola in:</Text>
 							</View>
 
 							<View style={styles.modalFooterLeftBottom}>
@@ -1018,7 +1019,8 @@ export default function PlayingField(myNavigation){
 
 						<View style={styles.modalFooterRight}>
 							<TouchableOpacity style={styles.button}>
-								<Text>Condividi</Text>
+								<Text style={styles.modalButtonText}>Condividi</Text>
+								<Entypo name="share" size={width/18}/>
 							</TouchableOpacity>
 						</View>
 					</View>
