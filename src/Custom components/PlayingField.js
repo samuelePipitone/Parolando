@@ -11,16 +11,11 @@ import Feather from 'react-native-vector-icons/Feather';
 var width = Dimensions.get('window').width; //full width
 
 let row = 1;
-let wordle = "PALLE";
 let currentLength = 0;
 let puntatore = 0;
 
-const myKey = (item) => {
-	return item.id;
-};  
-
 /*
-	TODO: riguarda i colori, a volte non prende alcuni gialli (allep)(marea)
+	TODO: 
 */
 export default function PlayingField(myNavigation){
 
@@ -37,6 +32,33 @@ export default function PlayingField(myNavigation){
 	const [keyList6, setKeyList6] = useState(field6);
 
 	const [modalVisible, setModalVisible] = useState(false);
+
+	const [wordle, setWordle] = useState([
+		{
+			letter: "P",
+			visited: false
+		},
+		{
+			letter: "A",
+			visited: false
+		},
+		{
+			letter: "L",
+			visited: false
+		},
+		{
+			letter: "L",
+			visited: false
+		},
+		{
+			letter: "E",
+			visited: false
+		}
+	]);
+
+	const myKey = (item) => {
+		return item.id;
+	};  
 
 	//aggiorna dinamicamente la pagina in base al tasto cliccato
 	useEffect(() => {
@@ -616,173 +638,275 @@ export default function PlayingField(myNavigation){
 
 	//controlla le lettere della parola inserita dall'utente
 	function checkWord(i){
-
 		if(rightLength(i)){
-
 			switch(row){
 				case 1: {
+					//check for green
 					for(let j = 0; j < 5; j++){
 
-						if(keyList[j].letter === wordle.charAt(j)){
+						if(keyList[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
 
 							const item = keyList[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList;
 							updatedArray[j] = updatedItem;
-					
 							setKeyList([...updatedArray]);
-		
-						} else if(checkLetter(keyList[j].letter) !== -1){
-
-							let k = checkLetter2(keyList[j].letter,
-								keyList[j].visited);
-
-							if(k === 0){
-								const item = keyList[k];
-								const updatedItem = {...item, state: "presente", visited: true};
-								const updatedArray = keyList;
-								updatedArray[k] = updatedItem;
-						
-								setKeyList([...updatedArray]);
-							}
 						} 
 					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
+					}
+					resetWordle();
 					break;
 				}
 				case 2: {
+					//check for green
 					for(let j = 0; j < 5; j++){
-						if(keyList2[j].letter === wordle.charAt(j)){
+
+						if(keyList2[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
+
 							const item = keyList2[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList2;
 							updatedArray[j] = updatedItem;
-
-							setKeyList2([...updatedArray]);
-		
-						} else if(checkLetter(keyList2[j].letter) !== -1){
-							let k = checkLetter(keyList2[j].letter);
-							const item = keyList2[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList2;
-							updatedArray[k] = updatedItem;
-					
 							setKeyList2([...updatedArray]);
 						} 
-					} 
+					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
+					}
 					break;
 				}
 				case 3: {
+					//check for green
 					for(let j = 0; j < 5; j++){
-						if(keyList3[j].letter === wordle.charAt(j)){
+
+						if(keyList3[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
+
 							const item = keyList3[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList3;
 							updatedArray[j] = updatedItem;
-					
-							setKeyList3([...updatedArray]);3
-		
-						} else if(checkLetter(keyList3[j].letter) !== -1){
-							let k = checkLetter(keyList3[j].letter);
-							const item = keyList3[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList3;
-							updatedArray[k] = updatedItem;
-					
 							setKeyList3([...updatedArray]);
 						} 
+					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
 					}
 					break;
 				}
 				case 4: {
+					//check for green
 					for(let j = 0; j < 5; j++){
-						if(keyList4[j].letter === wordle.charAt(j)){
+
+						if(keyList4[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
+
 							const item = keyList4[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList4;
 							updatedArray[j] = updatedItem;
-					
-							setKeyList4([...updatedArray]);
-		
-						} else if(checkLetter(keyList4[j].letter) !== -1){
-							let k = checkLetter(keyList4[j].letter);
-							const item = keyList4[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList4;
-							updatedArray[k] = updatedItem;
-					
 							setKeyList4([...updatedArray]);
 						} 
+					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
 					}
 					break;
 				}
 				case 5: {
+					//check for green
 					for(let j = 0; j < 5; j++){
-						if(keyList5[j].letter === wordle.charAt(j)){
+
+						if(keyList5[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
+
 							const item = keyList5[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList5;
 							updatedArray[j] = updatedItem;
-					
-							setKeyList5([...updatedArray]);
-		
-						} else if(checkLetter(keyList5[j].letter) !== -1){
-							let k = checkLetter(keyList5[j].letter);
-							const item = keyList5[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList5;
-							updatedArray[k] = updatedItem;
-					
 							setKeyList5([...updatedArray]);
 						} 
+					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
 					}
 					break;
 				}
 				case 6: {
+					//check for green
 					for(let j = 0; j < 5; j++){
-						if(keyList6[j].letter === wordle.charAt(j)){
+
+						if(keyList6[j].letter === wordle[j].letter){
+
+							const word = wordle[j];
+							const updatedWord = {...word, visited: true};
+							const updatedWordle = wordle;
+							updatedWordle[j] = updatedWord; 
+							setWordle([...updatedWordle]);
+
 							const item = keyList6[j];
 							const updatedItem = {...item, state: "indovinato"};
 							const updatedArray = keyList6;
 							updatedArray[j] = updatedItem;
-					
-							setKeyList6([...updatedArray]);
-		
-						} else if(checkLetter(keyList6[j].letter) !== -1){
-							let k = checkLetter(keyList6[j].letter);
-							const item = keyList6[k];
-							const updatedItem = {...item, state: "presente"};
-							const updatedArray = keyList6;
-							updatedArray[k] = updatedItem;
-					
 							setKeyList6([...updatedArray]);
 						} 
 					}
+					//check for yellow
+					for(let j = 0; j < 5; j++){
+						if(!wordle[j].visited){
+							checkForYellow(wordle[j].letter);
+						}
+					}
 					break;
 				}
-			}
+			}		
 		} 
 	};
 
-	//ritorna 1 se presente, -1 se non presente
-	function checkLetter(l) {
-		for(let i = 0; i < 5; i++){
-			if(l === wordle.charAt(i)){ //QUESTA E LA POSIZIONE DELLA LETTERA NELLA TUA PAROLA RINCOGLIONITO
-				return 0;
-			}
-		}
-		return -1;
-	}
-
-	function checkLetter2(l, visited) {
-		for(let i = 0; i < 5; i++){
-			if(!visited){
-				if(l === wordle.charAt(i)){ 
-					return 0;
+	//cerca se le lettere sono gialle
+	const checkForYellow = (key) => {
+		switch(row){
+			case 1:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList[i].state !== "indovinato"){
+						if(key === keyList[i].letter){
+							const item = keyList[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList;
+							updatedArray[i] = updatedItem;
+							setKeyList([...updatedArray]);
+						}
+					} 
 				}
+				break;
+			}
+			case 2:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList2[i].state !== "indovinato"){
+						if(key === keyList2[i].letter){
+							const item = keyList2[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList2;
+							updatedArray[i] = updatedItem;
+							setKeyList2([...updatedArray]);
+						}
+					} 
+				}
+				break;
+			}
+			case 3:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList3[i].state !== "indovinato"){
+						if(key === keyList3[i].letter){
+							const item = keyList3[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList3;
+							updatedArray[i] = updatedItem;
+							setKeyList3([...updatedArray]);
+						}
+					} 
+				}
+				break;
+			}
+			case 4:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList4[i].state !== "indovinato"){
+						if(key === keyList4[i].letter){
+							const item = keyList4[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList4;
+							updatedArray[i] = updatedItem;
+							setKeyList4([...updatedArray]);
+						}
+					} 
+				}
+				break;
+			}
+			case 5:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList5[i].state !== "indovinato"){
+						if(key === keyList5[i].letter){
+							const item = keyList5[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList5;
+							updatedArray[i] = updatedItem;
+							setKeyList5([...updatedArray]);
+						}
+					} 
+				}
+				break;
+			}
+			case 6:  {
+				for(let i = 0; i < 5; i++){
+					if(keyList6[i].state !== "indovinato"){
+						if(key === keyList6[i].letter){
+							const item = keyList6[i];
+							const updatedItem = {...item, state: "presente"};
+							const updatedArray = keyList6;
+							updatedArray[i] = updatedItem;
+							setKeyList6([...updatedArray]);
+						}
+					} 
+				}
+				break;
 			}
 		}
-		return -1;
-	}
+	};
+
+	//riporta la wordle a inesplorata -- per questioni di performance si potrebbe aggiornare in un colpo solo invece che fare rerender 5 volte
+	const resetWordle = () => {
+		for(let i = 0; i < 5 ; i++){
+			const word = wordle[i];
+			const updatedWord = {...word, visited: false};
+			const updatedWordle = wordle;
+			updatedWordle[i] = updatedWord; 
+			setWordle([...updatedWordle]);
+		}
+	};
 
 	//render grafico
 	return(
