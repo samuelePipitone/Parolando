@@ -21,7 +21,6 @@ const myKey = (item) => {
 
 /*
 	TODO: riguarda i colori, a volte non prende alcuni gialli (allep)(marea)
-	TODO: puntatore arancione da fixare
 */
 export default function PlayingField(myNavigation){
 
@@ -59,6 +58,7 @@ export default function PlayingField(myNavigation){
 						}
 						case 0: {
 							checkWord(currentLength);
+							updateRow();
 							row++;
 							puntatore = 0;
 							break;
@@ -85,6 +85,113 @@ export default function PlayingField(myNavigation){
 
 		return subscription.unsubscribe;
 	}, []);
+
+	//serve a eliminare il selected nell'ultima riga
+	const updateRow = () => {
+		switch(row){
+			case 1: {
+				const index = 4;
+
+				const item = keyList[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList;
+				updatedArray[index] = updatedItem;
+				setKeyList([...updatedArray]);
+
+				const nextRowIndex = 0;
+
+				const nextItemRow = keyList2[nextRowIndex];
+				const updatedNextItemRow = {...nextItemRow, selected: true};
+				const nextUpdatedArray = keyList2;
+				nextUpdatedArray[nextRowIndex] = updatedNextItemRow;
+				setKeyList2([...nextUpdatedArray]);
+				break;
+			}
+			case 2: {
+				const index = 4;
+
+				const item = keyList2[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList2;
+				updatedArray[index] = updatedItem;
+				setKeyList2([...updatedArray]);
+
+				const nextRowIndex = 0;
+
+				const nextItemRow = keyList3[nextRowIndex];
+				const updatedNextItemRow = {...nextItemRow, selected: true};
+				const nextUpdatedArray = keyList3;
+				nextUpdatedArray[nextRowIndex] = updatedNextItemRow;
+				setKeyList3([...nextUpdatedArray]);
+				break;
+			}
+			case 3: {
+				const index = 4;
+
+				const item = keyList3[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList3;
+				updatedArray[index] = updatedItem;
+				setKeyList3([...updatedArray]);
+
+				const nextRowIndex = 0;
+
+				const nextItemRow = keyList4[nextRowIndex];
+				const updatedNextItemRow = {...nextItemRow, selected: true};
+				const nextUpdatedArray = keyList4;
+				nextUpdatedArray[nextRowIndex] = updatedNextItemRow;
+				setKeyList4([...nextUpdatedArray]);
+				break;
+			}
+			case 4: {
+				const index = 4;
+
+				const item = keyList4[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList4;
+				updatedArray[index] = updatedItem;
+				setKeyList4([...updatedArray]);
+
+				const nextRowIndex = 0;
+
+				const nextItemRow = keyList5[nextRowIndex];
+				const updatedNextItemRow = {...nextItemRow, selected: true};
+				const nextUpdatedArray = keyList5;
+				nextUpdatedArray[nextRowIndex] = updatedNextItemRow;
+				setKeyList5([...nextUpdatedArray]);
+				break;
+			}
+			case 5: {
+				const index = 4;
+
+				const item = keyList5[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList5;
+				updatedArray[index] = updatedItem;
+				setKeyList5([...updatedArray]);
+
+				const nextRowIndex = 0;
+
+				const nextItemRow = keyList6[nextRowIndex];
+				const updatedNextItemRow = {...nextItemRow, selected: true};
+				const nextUpdatedArray = keyList6;
+				nextUpdatedArray[nextRowIndex] = updatedNextItemRow;
+				setKeyList6([...nextUpdatedArray]);
+				break;
+			}
+			case 6: {
+				const index = 4;
+		
+				const item = keyList6[index];
+				const updatedItem = {...item, selected: false};
+				const updatedArray = keyList6;
+				updatedArray[index] = updatedItem;
+		
+				setKeyList6([...updatedArray]);
+				break;
+			}
+		}
+	};
 
 	//aggiorna la lettera nella giusta riga
 	const updateData = (key) => {
@@ -363,12 +470,19 @@ export default function PlayingField(myNavigation){
 			case 2: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
+					const updatedArray = keyList2;
+
+					let nextItem = keyList2[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
 					const previousItem = keyList2[index - 1];
 					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
-					const updatedArray = keyList2;
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList2([...updatedArray]);
 					puntatore--;
 					break;
@@ -379,12 +493,19 @@ export default function PlayingField(myNavigation){
 			case 3: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
+					const updatedArray = keyList3;
+
+					let nextItem = keyList3[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
 					const previousItem = keyList3[index - 1];
 					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
-					const updatedArray = keyList3;
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList3([...updatedArray]);
 					puntatore--;
 					break;
@@ -395,12 +516,19 @@ export default function PlayingField(myNavigation){
 			case 4: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
+					const updatedArray = keyList4;
+
+					let nextItem = keyList4[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
 					const previousItem = keyList4[index - 1];
 					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
-					const updatedArray = keyList4;
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList4([...updatedArray]);
 					puntatore--;
 					break;
@@ -411,12 +539,19 @@ export default function PlayingField(myNavigation){
 			case 5: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
+					const updatedArray = keyList5;
+
+					let nextItem = keyList5[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
 					const previousItem = keyList5[index - 1];
 					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
-					const updatedArray = keyList5;
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList5([...updatedArray]);
 					puntatore--;
 					break;
@@ -427,12 +562,19 @@ export default function PlayingField(myNavigation){
 			case 6: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
+					const updatedArray = keyList6;
+
+					let nextItem = keyList6[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
 					const previousItem = keyList6[index - 1];
 					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
-					const updatedArray = keyList6;
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList6([...updatedArray]);
 					puntatore--;
 					break;
