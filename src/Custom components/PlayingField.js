@@ -340,12 +340,19 @@ export default function PlayingField(myNavigation){
 			case 1: {
 				if(puntatore > 0){
 					const index = puntatore;
-			
-					const previousItem = keyList[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
 					const updatedArray = keyList;
+
+					let nextItem = keyList[index];
+
+					if(nextItem !== undefined  && nextItem.selected){
+						nextItem = {...nextItem, selected: false}
+						updatedArray[index] = nextItem;
+					}
+
+					const previousItem = keyList[index - 1];
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					updatedArray[index - 1] = updatedPreviousItem;
-			
+					
 					setKeyList([...updatedArray]);
 					puntatore--;
 					break;
@@ -358,7 +365,7 @@ export default function PlayingField(myNavigation){
 					const index = puntatore;
 			
 					const previousItem = keyList2[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					const updatedArray = keyList2;
 					updatedArray[index - 1] = updatedPreviousItem;
 			
@@ -374,7 +381,7 @@ export default function PlayingField(myNavigation){
 					const index = puntatore;
 			
 					const previousItem = keyList3[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					const updatedArray = keyList3;
 					updatedArray[index - 1] = updatedPreviousItem;
 			
@@ -390,7 +397,7 @@ export default function PlayingField(myNavigation){
 					const index = puntatore;
 			
 					const previousItem = keyList4[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					const updatedArray = keyList4;
 					updatedArray[index - 1] = updatedPreviousItem;
 			
@@ -406,7 +413,7 @@ export default function PlayingField(myNavigation){
 					const index = puntatore;
 			
 					const previousItem = keyList5[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					const updatedArray = keyList5;
 					updatedArray[index - 1] = updatedPreviousItem;
 			
@@ -422,7 +429,7 @@ export default function PlayingField(myNavigation){
 					const index = puntatore;
 			
 					const previousItem = keyList6[index - 1];
-					const updatedPreviousItem = {...previousItem, selected: false, letter: ""};
+					const updatedPreviousItem = {...previousItem, selected: true, letter: ""};
 					const updatedArray = keyList6;
 					updatedArray[index - 1] = updatedPreviousItem;
 			
