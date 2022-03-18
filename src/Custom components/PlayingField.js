@@ -88,6 +88,7 @@ export default function PlayingField(myNavigation){
 								puntatore = 0;
 								break;
 							} else {
+								checkWord(currentLength);
 								setModalVisible(true);
 								break;
 							}

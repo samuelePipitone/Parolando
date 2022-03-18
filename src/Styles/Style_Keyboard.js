@@ -10,7 +10,7 @@ export default StyleSheet.create({
 		bottom: height/80
 	},
 	singleLetter: {
-		backgroundColor: 'lightgrey', 
+		//backgroundColor: 'lightgrey', 
 		justifyContent: 'center',
         alignItems: 'center',
 		width: width/12,
@@ -26,6 +26,18 @@ export default StyleSheet.create({
 		marginTop: height/80,
 		marginBottom: height/80,
 		borderRadius: 4
+	},
+	letterFind: {
+		backgroundColor: 'green'
+	},
+	letterAlmost: {
+		backgroundColor: 'yellow'
+	},
+	letteraNonPresente: {
+		backgroundColor: 'grey'
+	},
+	letteraStart: {
+		backgroundColor: 'lightgrey'
 	},
 	letterText: {
 		color: 'black',

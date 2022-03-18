@@ -33,28 +33,45 @@ export default function Options(){
 						</TouchableOpacity>
 					</View>
 
-					<View style={styles.titlesContainer}>
-						<View>
-							<Text style={styles.titlesText}>Account</Text>
+					<View>
+						<View style={styles.titlesContainer}>
+							<View>
+								<Text style={styles.titlesText}>Account</Text>
+
+								<Text style={styles.text}>Login/Logout</Text>
+							</View>
 						</View>
-					</View>
 
-					<View style={styles.titlesContainer}>
-						<Text style={styles.titlesText}>Profilo</Text>
-					</View>
+						<View style={styles.titlesContainer}>
+								<Text style={styles.titlesText}>Profilo</Text>
+							
+								<Text style={styles.text}>Statistiche</Text>
+								<Text style={styles.text}>Sala dei trofei</Text>
+								<Text style={styles.text}>Classifica</Text>
+								<Text style={styles.text}>Statistiche</Text>
+						</View>
 
-					<View style={styles.titlesContainer}>
-						<Text style={styles.titlesText}>Regole</Text>
-					</View>
+						<View style={styles.titlesContainer}>
+							<Text style={styles.titlesText}>Regole</Text>
 
-					<View style={styles.titlesContainer}>
-						<Text style={styles.titlesText}>Modalità scura</Text>
-					</View>
+							<Text style={styles.text}>Come giocare?</Text>
+							<Text style={styles.text}>Come ottenere medaglie?</Text>
+							<Text style={styles.text}>Come funzionano i trofei?</Text>
+						</View>
 
-					<View style={styles.titlesContainerLast}>
-						<Text style={styles.titlesText}>Crediti</Text>
-					</View>
+						<View style={styles.titlesContainer}>
+							<Text style={styles.titlesText}>Modalità scura</Text>
 
+							<Text style={styles.text}>Attiva/Disattiva</Text>
+						</View>
+
+						<View style={styles.titlesContainerLast}>
+							<Text style={styles.titlesText}>Crediti</Text>
+
+							<Text style={styles.text}>SSM TEAMS OFFICIAL</Text>
+						</View>
+
+					</View>
 				</ScrollView>
 			</Modal>
 

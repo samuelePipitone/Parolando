@@ -25,24 +25,20 @@ export default StyleSheet.create({
 	},
 	titlesContainer: {
 		//backgroundColor: 'pink',
-		height: height/10,
-		justifyContent: 'center',
-		alignItems: 'center',
 		borderBottomColor: 'black',
 		borderBottomWidth: 1,
-		width: '80%'
 	},
 	titlesContainerLast: {
 		//backgroundColor: 'pink',
-		height: height/10,
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: '80%'
+		
 	},
 	titlesText: {
 		fontWeight: 'bold',
 		color: 'black',
-		fontSize: 16
+		fontSize: 16,
+		marginBottom: '20%',
+		alignSelf: 'center',
+		marginTop: '5%'
 	},
 	headerOptions: {
 		flexDirection: 'row',
@@ -64,5 +60,8 @@ export default StyleSheet.create({
 	},
 	imageContainer: {
 		flex: 1
+	},
+	text:{
+		marginBottom: '10%'
 	}
 });
