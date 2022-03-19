@@ -21,13 +21,8 @@ export default StyleSheet.create({
 	  },
 	  body: {
 		width: '100%',
-		height: '60%',
+		height: '90%',
 		//backgroundColor: 'blue'
-	  },
-	  footer: {
-		width: '100%',
-		height: '30%',
-		//backgroundColor: 'red'
 	  },
 	  header_badges: {
 		//backgroundColor: 'pink',

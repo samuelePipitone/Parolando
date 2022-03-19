@@ -4,7 +4,9 @@ import { View, FlatList, Text, Modal,
 
 import styles from '../Styles/Style_PlayingField';
 import  { comunicationService } from '../Comunication';
+
 import { field, field2, field3, field4, field5, field6 } from '../data/PlayingFieldData';
+import { data1, data2, data3 } from '../data/KeyboardData';
 
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -16,9 +18,15 @@ let currentLength = 0;
 let puntatore = 0;
 
 /*
-	TODO: 
+	TODO: colore keyBoard
 */
 export default function PlayingField(myNavigation){
+
+	const [keyBoard, setKeyboard] = useState(data1);
+
+	const [keyBoard2, setKeyboard2] = useState(data2);
+
+	const [keyBoard3, setKeyboard3] = useState(data3);
 
 	const [keyList, setKeyList] = useState(field);
 
@@ -77,6 +85,7 @@ export default function PlayingField(myNavigation){
 
 					switch(right){
 						case 1: {
+							checkWord(currentLength);
 							setModalVisible(true);
 							break;
 						}
@@ -653,6 +662,74 @@ export default function PlayingField(myNavigation){
 		}
 	}; 
 
+	//colora una lettera di verde
+	const colorKeyGreen =  l  => {
+		for(let i = 0; i < 10; i++){
+			if(l === keyBoard[i].letter && keyBoard[i].state !== "nonPresente"){
+				const word = keyBoard[i];
+				const updatedWord = {...word, state: "indovinato"};
+				const updatedWordle = keyBoard;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard2[i].letter && keyBoard[i].state !== "nonPresente"){
+				const word = keyBoard2[i];
+				const updatedWord = {...word, state: "indovinato"};
+				const updatedWordle = keyBoard2;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard2([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard3[i].letter && keyBoard[i].state !== "nonPresente"){
+				const word = keyBoard3[i];
+				const updatedWord = {...word, state: "indovinato"};
+				const updatedWordle = keyBoard3;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard3([...updatedWordle]);
+			}
+		};
+	};
+
+	//colora una lettera di giallo
+	const colorKeyYellow = l => {
+		for(let i = 0; i < 10; i++){
+			if(l === keyBoard[i].letter 
+				&& keyBoard[i].state !== "nonPresente"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard[i];
+				const updatedWord = {...word, state: "presente"};
+				const updatedWordle = keyBoard;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard2[i].letter 
+				&& keyBoard[i].state !== "nonPresente"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard2[i];
+				const updatedWord = {...word, state: "presente"};
+				const updatedWordle = keyBoard2;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard2([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard3[i].letter 
+				&& keyBoard[i].state !== "nonPresente"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard3[i];
+				const updatedWord = {...word, state: "presente"};
+				const updatedWordle = keyBoard3;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard3([...updatedWordle]);
+			}
+		};
+	};
+
 	//controlla le lettere della parola inserita dall'utente
 	function checkWord(i){
 		if(rightLength(i)){
@@ -674,6 +751,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList;
 							updatedArray[j] = updatedItem;
 							setKeyList([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -702,6 +781,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList2;
 							updatedArray[j] = updatedItem;
 							setKeyList2([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -729,6 +810,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList3;
 							updatedArray[j] = updatedItem;
 							setKeyList3([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -756,6 +839,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList4;
 							updatedArray[j] = updatedItem;
 							setKeyList4([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -783,6 +868,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList5;
 							updatedArray[j] = updatedItem;
 							setKeyList5([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -810,6 +897,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList6;
 							updatedArray[j] = updatedItem;
 							setKeyList6([...updatedArray]);
+
+							colorKeyGreen(wordle[j].letter);
 						} 
 					}
 					//check for yellow
@@ -836,6 +925,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList;
 							updatedArray[i] = updatedItem;
 							setKeyList([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -850,6 +941,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList2;
 							updatedArray[i] = updatedItem;
 							setKeyList2([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -864,6 +957,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList3;
 							updatedArray[i] = updatedItem;
 							setKeyList3([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -878,6 +973,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList4;
 							updatedArray[i] = updatedItem;
 							setKeyList4([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -892,6 +989,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList5;
 							updatedArray[i] = updatedItem;
 							setKeyList5([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -906,6 +1005,8 @@ export default function PlayingField(myNavigation){
 							const updatedArray = keyList6;
 							updatedArray[i] = updatedItem;
 							setKeyList6([...updatedArray]);
+
+							colorKeyYellow(key);
 						}
 					} 
 				}
@@ -925,170 +1026,248 @@ export default function PlayingField(myNavigation){
 		}
 	};
 
+	//stile della keyBoard
+	const myStyle2 = ( state ) => {
+
+		if(state === "inizio"){
+			return styles.letteraStart;
+		} else if (state === "indovinato"){
+			return styles.letterFind;
+		} else if(state === "presente"){
+			return styles.letterAlmost;
+		} else if(state === "nonPresente"){
+			return styles.letteraNonPresente;
+		}
+	};
+
+	//item della keyBoard
+	const Item2 = ( {stylez, letter, state} ) => (
+		<TouchableOpacity onPress={() => sendMessage(letter)} style={
+			[stylez === 'singleLetter' ? styles.singleLetter : styles.doubleLetter,
+				myStyle2(state)
+			]}>
+
+			<Text style={styles.letterText}>{letter}</Text>
+		</TouchableOpacity>
+	);
+
+	//render della keyBoard
+	const renderItem2 = ( {item} ) => (
+		<Item2 stylez={item.style} letter={item.letter} state={item.state}/>
+	);
+
+	//send message della keyBoard
+	function sendMessage(key){
+		comunicationService.sendMessage(key);
+	};
+
 	//render grafico
 	return(
-		<View style={styles.container}>
+		<View style={styles.prova}>
+			<View style={styles.container}>
 
-			<Modal
-			animationType = "none"
-			transparent = {true}
-			visible = {modalVisible}
-			>
+				<Modal
+				animationType = "none"
+				transparent = {true}
+				visible = {modalVisible}
+				>
 
-				<View style={styles.modalContainer}>
+					<View style={styles.modalContainer}>
 
-					<View style={styles.modalHeader}>
-						<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalVisible(false)}>
-							<Feather name='x' size={width/10}/>
-						</TouchableOpacity>
-					</View>
-
-					<View style={styles.modalBody}>
-
-						<View style={styles.modalBodyUp}>
-
-							<View style={styles.modalBodyUpHeader}>
-								<Text style={styles.modalTitolo}>Statistiche:</Text>
-							</View>
-							<View style={styles.modalBodyUpBody}>
-
-								<View style={styles.modalBodyUpBodyLeft}>
-
-									<View style={styles.modalText}>
-										<Text style={styles.modalStatText}>Partite giocate: </Text>
-									</View>
-
-									<View style={styles.modalText}>
-										<Text style={styles.modalStatText}>% Parole indovinate:</Text>
-									</View>
-
-									<View style={styles.modalText}>
-										<Text style={styles.modalStatText}>Serie di vittorie:</Text>
-									</View>
-
-									<View style={styles.modalText}>
-										<Text style={styles.modalStatText}>Serie vitt. massima:</Text>
-									</View>
-
-								</View>
-
-								<View style={styles.modalBodyUpBodyRight}>
-
-									<View style={styles.modalValue}>
-										<Text style={styles.modalStatNumbers}>0</Text>
-									</View>
-
-									<View style={styles.modalValue}>
-										<Text style={styles.modalStatNumbers}>0</Text>
-									</View>
-
-									<View style={styles.modalValue}>
-										<Text style={styles.modalStatNumbers}>0</Text>
-									</View>
-
-									<View style={styles.modalValue}>
-										<Text style={styles.modalStatNumbers}>0</Text>
-									</View>
-								</View>
-							</View>
-						</View>
-
-						<View style={styles.modalBodyDown}>
-
-							<View style={styles.modalBodyDownUp}>
-								<Text style={styles.modalTitolo}>Titolo</Text>
-							</View>
-
-							<View style={styles.modalBodyDownDown}>
-								<Text>GRAFICO</Text>
-							</View>
-						</View>
-					</View>
-
-					<View style={styles.modalFooter}>
-
-						<View style={styles.modalFooterLeft}>
-							
-							<View style={styles.modalFooterLeftTop}>
-								<Text style={styles.modalTitoletto}>Prossima parola in:</Text>
-							</View>
-
-							<View style={styles.modalFooterLeftBottom}>
-								<Text>1 giorno</Text>
-							</View>
-						</View>
-
-						<View style={styles.modalFooterRight}>
-							<TouchableOpacity style={styles.button}>
-								<Text style={styles.modalButtonText}>Condividi</Text>
-								<Entypo name="share" size={width/18}/>
+						<View style={styles.modalHeader}>
+							<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalVisible(false)}>
+								<Feather name='x' size={width/10}/>
 							</TouchableOpacity>
 						</View>
+
+						<View style={styles.modalBody}>
+
+							<View style={styles.modalBodyUp}>
+
+								<View style={styles.modalBodyUpHeader}>
+									<Text style={styles.modalTitolo}>Statistiche:</Text>
+								</View>
+								<View style={styles.modalBodyUpBody}>
+
+									<View style={styles.modalBodyUpBodyLeft}>
+
+										<View style={styles.modalText}>
+											<Text style={styles.modalStatText}>Partite giocate: </Text>
+										</View>
+
+										<View style={styles.modalText}>
+											<Text style={styles.modalStatText}>% Parole indovinate:</Text>
+										</View>
+
+										<View style={styles.modalText}>
+											<Text style={styles.modalStatText}>Serie di vittorie:</Text>
+										</View>
+
+										<View style={styles.modalText}>
+											<Text style={styles.modalStatText}>Serie vitt. massima:</Text>
+										</View>
+
+									</View>
+
+									<View style={styles.modalBodyUpBodyRight}>
+
+										<View style={styles.modalValue}>
+											<Text style={styles.modalStatNumbers}>0</Text>
+										</View>
+
+										<View style={styles.modalValue}>
+											<Text style={styles.modalStatNumbers}>0</Text>
+										</View>
+
+										<View style={styles.modalValue}>
+											<Text style={styles.modalStatNumbers}>0</Text>
+										</View>
+
+										<View style={styles.modalValue}>
+											<Text style={styles.modalStatNumbers}>0</Text>
+										</View>
+									</View>
+								</View>
+							</View>
+
+							<View style={styles.modalBodyDown}>
+
+								<View style={styles.modalBodyDownUp}>
+									<Text style={styles.modalTitolo}>Titolo</Text>
+								</View>
+
+								<View style={styles.modalBodyDownDown}>
+									<Text>GRAFICO</Text>
+								</View>
+							</View>
+						</View>
+
+						<View style={styles.modalFooter}>
+
+							<View style={styles.modalFooterLeft}>
+								
+								<View style={styles.modalFooterLeftTop}>
+									<Text style={styles.modalTitoletto}>Prossima parola in:</Text>
+								</View>
+
+								<View style={styles.modalFooterLeftBottom}>
+									<Text>1 giorno</Text>
+								</View>
+							</View>
+
+							<View style={styles.modalFooterRight}>
+								<TouchableOpacity style={styles.button}>
+									<Text style={styles.modalButtonText}>Condividi</Text>
+									<Entypo name="share" size={width/18}/>
+								</TouchableOpacity>
+							</View>
+						</View>
+
+					</View>
+				</Modal>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList}
+					/>
+				</View>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList2}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList2}
+					/>
+				</View>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList3}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList3}
+					/>
+				</View>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList4}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList4}
+					/>
+				</View>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList5}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList5}
+					/>
+				</View>
+
+				<View style={styles.blocks}>
+					<FlatList
+					horizontal={true}
+					data = {keyList6}
+					renderItem = {renderItem}
+					keyExtractor = {myKey}
+					extraData={keyList6}
+					/>
+				</View>
+
+			</View>
+
+			<View style={styles.footer}>
+				<View style={styles.container2}>
+
+					<View style={styles.row1}>
+
+					<FlatList
+					horizontal = {true}
+					data = {keyBoard}
+					keyExtractor = {myKey}
+					renderItem = {renderItem2}
+					contentContainerStyle = {styles.stileFlat}
+					/>
+
 					</View>
 
+					<View style={styles.row2}>
+
+					<FlatList
+					horizontal = {true}
+					data = {keyBoard2}
+					keyExtractor = {myKey}
+					renderItem = {renderItem2}
+					contentContainerStyle = {styles.stileFlat}
+					/>
+
+					</View>
+
+					<View style={styles.row3}>
+
+					<FlatList
+					horizontal = {true}
+					data = {keyBoard3}
+					keyExtractor = {myKey}
+					renderItem = {renderItem2}
+					contentContainerStyle = {styles.stileFlat}
+					/>
+
+					</View>
 				</View>
-			</Modal>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList}
-				/>
 			</View>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList2}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList2}
-				/>
-			</View>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList3}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList3}
-				/>
-			</View>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList4}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList4}
-				/>
-			</View>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList5}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList5}
-				/>
-			</View>
-
-			<View style={styles.blocks}>
-				<FlatList
-				horizontal={true}
-				data = {keyList6}
-				renderItem = {renderItem}
-				keyExtractor = {myKey}
-				extraData={keyList6}
-				/>
-			</View>
-
 		</View>
 	);
 }

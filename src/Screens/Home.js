@@ -9,13 +9,12 @@ import Kda from '../Custom components/Kda';
 import Badges from '../Custom components/Badges';
 import Options from '../Custom components/Options';
 import PlayingField from '../Custom components/PlayingField';
-import MyKeyboard from '../Custom components/MyKeyboard';
 
 /* 
 	NOTE:
 		-margine da togliere fisso e mettere variabile
 		-fontsize da mettere in percentuale e non fissi
-		-opzioni da rivedere e anche stile, ho fuckuppato un po'
+		-ottimizzare spazio e tempo
 */
 
 export default function Home({ navigation }){
@@ -44,12 +43,6 @@ export default function Home({ navigation }){
 				<View style={styles.body}>
 
 					<PlayingField myNavigation={navigation}/>
-
-				</View>
-
-				<View style={styles.footer}>
-
-					<MyKeyboard/>
 
 				</View>
 
