@@ -9,14 +9,38 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         margin: width/80,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+		flexDirection: 'row'
 	},
-    text: {
-        fontWeight: 'bold',
-        fontSize: width/25
-    },
     value: {
         fontWeight: 'bold',
-        fontSize: width/20
-    }
+        fontSize: width/16,
+		letterSpacing: 2
+    },
+	modalContainer: {
+		height: height/3,
+		width: width/1.7,
+		backgroundColor: 'white',
+		alignSelf: 'flex-end',
+		marginTop: '20%',
+		marginRight: '2%',
+		borderColor: 'black',
+		borderWidth: 1,
+		borderRadius: 10
+	},
+	modalHeader:{
+		height: '20%',
+	},
+	modalBody: {
+		height: '80%',
+	},
+	modalClickHeader: {
+		alignSelf: 'flex-end'
+	},
+	modalText: {
+		fontWeight: '600',
+		fontSize: width/24,
+		marginTop: '10%',
+		textAlign: 'center'
+	}
 });

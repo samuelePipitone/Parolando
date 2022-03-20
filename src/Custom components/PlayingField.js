@@ -19,6 +19,8 @@ let puntatore = 0;
 
 /*
 	TODO: colore keyBoard fix
+	TODO: migliorare le prestazioni
+	TODO: stile complessivo da cambiare
 */
 export default function PlayingField(myNavigation){
 
@@ -674,7 +676,7 @@ export default function PlayingField(myNavigation){
 			}
 		};
 		for(let i = 0; i < 9; i++){
-			if(l === keyBoard2[i].letter && keyBoard[i].state !== "nonPresente"){
+			if(l === keyBoard2[i].letter && keyBoard2[i].state !== "nonPresente"){
 				const word = keyBoard2[i];
 				const updatedWord = {...word, state: "indovinato"};
 				const updatedWordle = keyBoard2;
@@ -683,7 +685,7 @@ export default function PlayingField(myNavigation){
 			}
 		};
 		for(let i = 0; i < 9; i++){
-			if(l === keyBoard3[i].letter && keyBoard[i].state !== "nonPresente"){
+			if(l === keyBoard3[i].letter && keyBoard3[i].state !== "nonPresente"){
 				const word = keyBoard3[i];
 				const updatedWord = {...word, state: "indovinato"};
 				const updatedWordle = keyBoard3;
@@ -696,9 +698,7 @@ export default function PlayingField(myNavigation){
 	//colora una lettera di giallo
 	const colorKeyYellow = l => {
 		for(let i = 0; i < 10; i++){
-			if(l === keyBoard[i].letter 
-				&& keyBoard[i].state !== "nonPresente"
-				&& keyBoard[i].state !== "presente"){
+			if(l === keyBoard[i].letter && keyBoard[i].state !== "presente"){
 				const word = keyBoard[i];
 				const updatedWord = {...word, state: "presente"};
 				const updatedWordle = keyBoard;
@@ -707,9 +707,7 @@ export default function PlayingField(myNavigation){
 			}
 		};
 		for(let i = 0; i < 9; i++){
-			if(l === keyBoard2[i].letter 
-				&& keyBoard[i].state !== "nonPresente"
-				&& keyBoard[i].state !== "presente"){
+			if(l === keyBoard2[i].letter && keyBoard2[i].state !== "presente"){
 				const word = keyBoard2[i];
 				const updatedWord = {...word, state: "presente"};
 				const updatedWordle = keyBoard2;
@@ -718,9 +716,7 @@ export default function PlayingField(myNavigation){
 			}
 		};
 		for(let i = 0; i < 9; i++){
-			if(l === keyBoard3[i].letter 
-				&& keyBoard[i].state !== "nonPresente"
-				&& keyBoard[i].state !== "presente"){
+			if(l === keyBoard3[i].letter && keyBoard3[i].state !== "presente"){
 				const word = keyBoard3[i];
 				const updatedWord = {...word, state: "presente"};
 				const updatedWordle = keyBoard3;
@@ -745,8 +741,8 @@ export default function PlayingField(myNavigation){
 		};
 		for(let i = 0; i < 9; i++){
 			if(l === keyBoard2[i].letter 
-				&& keyBoard[i].state !== "indovinato"
-				&& keyBoard[i].state !== "presente"){
+				&& keyBoard2[i].state !== "indovinato"
+				&& keyBoard2[i].state !== "presente"){
 				const word = keyBoard2[i];
 				const updatedWord = {...word, state: "nonPresente"};
 				const updatedWordle = keyBoard2;
@@ -756,8 +752,8 @@ export default function PlayingField(myNavigation){
 		};
 		for(let i = 0; i < 9; i++){
 			if(l === keyBoard3[i].letter 
-				&& keyBoard[i].state !== "indovinato"
-				&& keyBoard[i].state !== "presente"){
+				&& keyBoard3[i].state !== "indovinato"
+				&& keyBoard3[i].state !== "presente"){
 				const word = keyBoard3[i];
 				const updatedWord = {...word, state: "nonPresente"};
 				const updatedWordle = keyBoard3;

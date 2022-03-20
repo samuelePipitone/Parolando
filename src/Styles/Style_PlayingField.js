@@ -250,7 +250,8 @@ export default StyleSheet.create({
 		width: width/12,
 		marginTop: height/80,
 		marginBottom: height/80,
-		borderRadius: 6
+		borderRadius: 6,
+		borderWidth: 1
 	},
 	doubleLetter: {
 		backgroundColor: 'lightgrey', 
@@ -259,19 +260,25 @@ export default StyleSheet.create({
 		width: width/7,
 		marginTop: height/80,
 		marginBottom: height/80,
-		borderRadius: 4
+		borderRadius: 4,
+		borderWidth: 1,
+		borderColor: '#b0b0b0'
 	},
 	letterFind: {
-		backgroundColor: 'green'
+		backgroundColor: 'green',
+		borderColor: '#003603'
 	},
 	letterAlmost: {
-		backgroundColor: 'yellow'
+		backgroundColor: 'yellow',
+		borderColor: '#635800'
 	},
 	letteraNonPresente: {
-		backgroundColor: 'grey'
+		backgroundColor: 'grey',
+		borderColor: '#525251'
 	},
 	letteraStart: {
-		backgroundColor: 'lightgrey'
+		backgroundColor: 'lightgrey',
+		borderColor: '#b0b0b0'
 	},
 	letterText: {
 		color: 'black',
