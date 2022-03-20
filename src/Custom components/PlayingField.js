@@ -18,7 +18,7 @@ let currentLength = 0;
 let puntatore = 0;
 
 /*
-	TODO: colore keyBoard
+	TODO: colore keyBoard fix
 */
 export default function PlayingField(myNavigation){
 
@@ -730,6 +730,43 @@ export default function PlayingField(myNavigation){
 		};
 	};
 
+	//colora una lettera di nero
+	const colorKeyBlack = l => {
+		for(let i = 0; i < 10; i++){
+			if(l === keyBoard[i].letter 
+				&& keyBoard[i].state !== "indovinato"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard[i];
+				const updatedWord = {...word, state: "nonPresente"};
+				const updatedWordle = keyBoard;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard2[i].letter 
+				&& keyBoard[i].state !== "indovinato"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard2[i];
+				const updatedWord = {...word, state: "nonPresente"};
+				const updatedWordle = keyBoard2;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard2([...updatedWordle]);
+			}
+		};
+		for(let i = 0; i < 9; i++){
+			if(l === keyBoard3[i].letter 
+				&& keyBoard[i].state !== "indovinato"
+				&& keyBoard[i].state !== "presente"){
+				const word = keyBoard3[i];
+				const updatedWord = {...word, state: "nonPresente"};
+				const updatedWordle = keyBoard3;
+				updatedWordle[i] = updatedWord; 
+				setKeyboard3([...updatedWordle]);
+			}
+		};
+	};
+
 	//controlla le lettere della parola inserita dall'utente
 	function checkWord(i){
 		if(rightLength(i)){
@@ -930,6 +967,12 @@ export default function PlayingField(myNavigation){
 						}
 					} 
 				}
+				for(let i = 0; i < 5; i++){
+					if(keyList[i].state !== "indovinato" &&
+						keyList[i].state !== "presente"){
+							colorKeyBlack(keyList[i].letter);
+					} 
+				}
 				break;
 			}
 			case 2:  {
@@ -944,6 +987,12 @@ export default function PlayingField(myNavigation){
 
 							colorKeyYellow(key);
 						}
+					} 
+				}
+				for(let i = 0; i < 5; i++){
+					if(keyList2[i].state !== "indovinato" &&
+						keyList2[i].state !== "presente"){
+							colorKeyBlack(keyList2[i].letter);
 					} 
 				}
 				break;
@@ -962,6 +1011,12 @@ export default function PlayingField(myNavigation){
 						}
 					} 
 				}
+				for(let i = 0; i < 5; i++){
+					if(keyList3[i].state !== "indovinato" &&
+						keyList3[i].state !== "presente"){
+							colorKeyBlack(keyList3[i].letter);
+					} 
+				}
 				break;
 			}
 			case 4:  {
@@ -976,6 +1031,12 @@ export default function PlayingField(myNavigation){
 
 							colorKeyYellow(key);
 						}
+					} 
+				}
+				for(let i = 0; i < 5; i++){
+					if(keyList4[i].state !== "indovinato" &&
+						keyList4[i].state !== "presente"){
+							colorKeyBlack(keyList4[i].letter);
 					} 
 				}
 				break;
@@ -994,6 +1055,12 @@ export default function PlayingField(myNavigation){
 						}
 					} 
 				}
+				for(let i = 0; i < 5; i++){
+					if(keyList5[i].state !== "indovinato" &&
+						keyList5[i].state !== "presente"){
+							colorKeyBlack(keyList5[i].letter);
+					} 
+				}
 				break;
 			}
 			case 6:  {
@@ -1008,6 +1075,12 @@ export default function PlayingField(myNavigation){
 
 							colorKeyYellow(key);
 						}
+					} 
+				}
+				for(let i = 0; i < 5; i++){
+					if(keyList6[i].state !== "indovinato" &&
+						keyList6[i].state !== "presente"){
+							colorKeyBlack(keyList6[i].letter);
 					} 
 				}
 				break;
