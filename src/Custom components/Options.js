@@ -13,6 +13,8 @@ export default function Options(){
 
 	const [modalVisible, setModalVisible] = useState(false);
 
+	const [modalStatistiche, setModalStatistiche] = useState(true);
+
     return(
 		<View style={styles.container}>
 

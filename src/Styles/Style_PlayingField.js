@@ -18,7 +18,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     singleBlock: {
-        backgroundColor: 'grey',
+        backgroundColor: '#949494', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -26,10 +26,12 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 1
+		borderRadius: 3,
+		borderWidth: 1,
+		borderColor: '#696969' //dark grey
     },
 	singleBlockAlmost: {
-        backgroundColor: 'yellow',
+        backgroundColor: '#F7DE3A', //yellow
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -37,10 +39,12 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 1
+		borderRadius: 1,
+		borderWidth: 1,
+		borderColor: '#85771e' //dark yellow
     },
 	singleBlockRight: {
-        backgroundColor: 'green',
+        backgroundColor: '#189e00', //green
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -48,7 +52,9 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 1
+		borderRadius: 1,
+		borderWidth: 1,
+		borderColor: '#0f6600' //dark green
     },
     textBlock: {
         color: 'white',
@@ -176,7 +182,7 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 	},
 	singleBlockRightSelected:{
-		backgroundColor: 'green',
+		backgroundColor: '#189e00', //green
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -189,7 +195,7 @@ export default StyleSheet.create({
 		borderColor: 'orange'
 	},
 	singleBlockAlmostSelected:{
-        backgroundColor: 'yellow',
+        backgroundColor: '#F7DE3A', //yellow
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -202,7 +208,7 @@ export default StyleSheet.create({
 		borderColor: 'orange'
 	},
 	singleBlockSelected:{
-		backgroundColor: 'grey',
+		backgroundColor: '#949494', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -210,9 +216,9 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 1,
-		borderWidth: 2,
-		borderColor: 'orange'
+		borderRadius: 3,
+		borderWidth: 2.5,
+		borderColor: '#F99F38' //orange
 	},
 	//----TESTO-----
 	modalTitolo: {
@@ -244,7 +250,6 @@ export default StyleSheet.create({
 		bottom: height/80
 	},
 	singleLetter: {
-		//backgroundColor: 'lightgrey', 
 		justifyContent: 'center',
         alignItems: 'center',
 		width: width/12,
@@ -265,15 +270,15 @@ export default StyleSheet.create({
 		borderColor: '#b0b0b0'
 	},
 	letterFind: {
-		backgroundColor: 'green',
+		backgroundColor: '#189e00', //green
 		borderColor: '#003603'
 	},
 	letterAlmost: {
-		backgroundColor: 'yellow',
+		backgroundColor: '#F7DE3A', //yellow
 		borderColor: '#635800'
 	},
 	letteraNonPresente: {
-		backgroundColor: 'grey',
+		backgroundColor: '#404040', //dark grey
 		borderColor: '#525251'
 	},
 	letteraStart: {

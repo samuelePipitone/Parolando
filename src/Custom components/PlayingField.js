@@ -18,9 +18,9 @@ let currentLength = 0;
 let puntatore = 0;
 
 /*
-	TODO: colore keyBoard fix
 	TODO: migliorare le prestazioni
 	TODO: stile complessivo da cambiare
+	TODO: crea un folder con i vari modal e collegagli gli stili
 */
 export default function PlayingField(myNavigation){
 
