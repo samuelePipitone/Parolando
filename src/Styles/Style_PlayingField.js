@@ -18,7 +18,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     singleBlock: {
-        backgroundColor: '#949494', //grey
+        backgroundColor: '#8A8A8A', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -26,7 +26,6 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 3,
 		borderWidth: 1,
 		borderColor: '#696969' //dark grey
     },
@@ -208,7 +207,7 @@ export default StyleSheet.create({
 		borderColor: 'orange'
 	},
 	singleBlockSelected:{
-		backgroundColor: '#949494', //grey
+		backgroundColor: '#8A8A8A', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -216,8 +215,7 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
 		marginRight: 2,
-		borderRadius: 3,
-		borderWidth: 2.5,
+		borderWidth: 2,
 		borderColor: '#F99F38' //orange
 	},
 	//----TESTO-----

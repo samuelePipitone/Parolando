@@ -120,7 +120,7 @@ export const data2 = [
 
 export const data3 = [
 	{
-		'letter': 'INVIO',
+		'letter': 'CANC',
 		'style': 'doubleLetter',
 		'id': 20,
 		'state': 'nonModificabile'
@@ -168,7 +168,7 @@ export const data3 = [
 		'state': 'inizio'
 	},
 	{
-		'letter': 'CANC',
+		'letter': 'INVIO',
 		'style': 'doubleLetter',
 		'id': 28,
 		'state': 'nonModificabile'

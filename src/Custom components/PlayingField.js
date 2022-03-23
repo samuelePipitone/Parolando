@@ -18,10 +18,12 @@ let currentLength = 0;
 let puntatore = 0;
 
 /*
-	TODO: migliorare le prestazioni
-	TODO: stile complessivo da cambiare
-	TODO: crea un folder con i vari modal e collegagli gli stili
+	TODO: migliorare le prestazioni -- ridurre for e ridurre stati
+	TODO: modal statistiche da rivedere che non si legge
+	TODO: forse il comunication service?
+	TODO: forse separare keyboard?
 */
+
 export default function PlayingField(myNavigation){
 
 	const [keyBoard, setKeyboard] = useState(data1);
@@ -1298,9 +1300,8 @@ export default function PlayingField(myNavigation){
 			</View>
 
 			<View style={styles.footer}>
-				<View style={styles.container2}>
-
-					<View style={styles.row1}>
+				
+				<View style={styles.row1}>
 
 					<FlatList
 					horizontal = {true}
@@ -1334,7 +1335,6 @@ export default function PlayingField(myNavigation){
 					contentContainerStyle = {styles.stileFlat}
 					/>
 
-					</View>
 				</View>
 			</View>
 		</View>
