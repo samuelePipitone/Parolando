@@ -19,10 +19,7 @@ export default StyleSheet.create({
 		borderLeftWidth: 1,
 		borderLeftColor: 'black',
 		alignItems: 'center',
-		height: '98%',
 		marginTop: '4%',
-		borderBottomColor: 'black',
-		borderBottomWidth: 1
 	},
 	titlesContainer: {
 		//backgroundColor: 'pink',
@@ -74,7 +71,7 @@ export default StyleSheet.create({
 		fontWeight: '400'
 	},
 	modalStatNumbers: {
-		marginRight: '80%',
+		marginRight: '70%',
 		fontWeight: '600',
 		fontSize: width/25
 	},
@@ -94,8 +91,9 @@ export default StyleSheet.create({
 		marginLeft: width/35,
 		marginTop: height/8,
 		marginBottom: height/(2,5),
-		borderColor: 'black',
-		borderWidth: 1
+		borderColor: '#3d3d3d',
+		borderWidth: 1,
+		borderRadius: 4
 	},
 	modalHeader:{
 		//backgroundColor: 'red',
@@ -104,6 +102,8 @@ export default StyleSheet.create({
 	},
 	modalClickHeader:{
 		width: width/10,
+		marginRight: '1%',
+		marginTop: '1%'
 		//backgroundColor: 'yellow'
 	},
 	modalBody:{
@@ -133,10 +133,10 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	modalBodyUpBodyRight:{
-		flex: 1,
+		flex: 1.8,
 		backgroundColor: 'white',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	modalText:{
 		height: height/12,
@@ -209,5 +209,51 @@ export default StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'row',
+	},
+	containerSfondo: {
+		backgroundColor: 'rgba(59, 59, 59, 0.8)',
+		flex: 1
+	},
+	modalBody2:{
+		flex: 6,
+		marginLeft: '5%',
+		marginRight: '5%'
+	},
+	modalContainer3: {	
+		backgroundColor: 'white',
+		flex: 1,
+		marginRight: width/35,
+		marginLeft: width/35,
+		marginTop: height/8,
+		marginBottom: height/2.6,
+		borderColor: '#3d3d3d',
+		borderWidth: 1,
+		borderRadius: 4
+	},
+	textComeGiocare: {
+		fontSize: width/24,
+		fontWeight: '900'
+	},
+	modalContainer4: {	
+		backgroundColor: 'white',
+		flex: 1,
+		marginRight: width/35,
+		marginLeft: width/35,
+		marginTop: height/8,
+		marginBottom: height/2.2,
+		borderColor: '#3d3d3d',
+		borderWidth: 1,
+		borderRadius: 4
+	},
+	modalContainer5: {	
+		backgroundColor: 'white',
+		flex: 1,
+		marginRight: width/35,
+		marginLeft: width/35,
+		marginTop: height/8,
+		marginBottom: height/2.6,
+		borderColor: '#3d3d3d',
+		borderWidth: 1,
+		borderRadius: 4
 	},
 });

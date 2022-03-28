@@ -1,4 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+var width = Dimensions.get('window').width; //full width
+var height = Dimensions.get('window').height; //full height
 
 export default StyleSheet.create({
 	container: {
@@ -18,15 +21,24 @@ export default StyleSheet.create({
 	},
 	blockOne:{
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	blockTwo: {
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	blockThree: {
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	titles: {
 		marginLeft: '5%',
+		alignSelf: 'center',
+		fontSize: width/25,
+		fontWeight: 'bold'
 	},
 	images: {
 		marginLeft: '5%',

@@ -18,7 +18,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     singleBlock: {
-        backgroundColor: '#8A8A8A', //grey
+        backgroundColor: '#adadad', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -67,8 +67,9 @@ export default StyleSheet.create({
 		marginLeft: width/35,
 		marginTop: height/8,
 		marginBottom: height/(2,5),
-		borderColor: 'black',
-		borderWidth: 1
+		borderColor: '#3d3d3d',
+		borderWidth: 1,
+		borderRadius: 4
 	},
 	modalHeader:{
 		//backgroundColor: 'red',
@@ -77,6 +78,8 @@ export default StyleSheet.create({
 	},
 	modalClickHeader:{
 		width: width/10,
+		marginRight: '1%',
+		marginTop: '1%'
 		//backgroundColor: 'yellow'
 	},
 	modalBody:{
@@ -106,8 +109,8 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	modalBodyUpBodyRight:{
-		flex: 1,
-		backgroundColor: 'white',
+		flex: 1.5,
+		//backgroundColor: 'yellow',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -207,7 +210,7 @@ export default StyleSheet.create({
 		borderColor: 'orange'
 	},
 	singleBlockSelected:{
-		backgroundColor: '#8A8A8A', //grey
+		backgroundColor: '#adadad', //grey
         width: width/6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -224,11 +227,11 @@ export default StyleSheet.create({
 		fontSize: width/18
 	},
 	modalStatText: {
-		fontSize: width/28,
+		fontSize: width/30,
 		fontWeight: '400'
 	},
 	modalStatNumbers: {
-		marginRight: '80%',
+		marginRight: '70%',
 		fontWeight: '600',
 		fontSize: width/25
 	},
@@ -314,5 +317,9 @@ export default StyleSheet.create({
 	},
 	footer: {
 		height: '35%'
+	},
+	containerSfondo: {
+		backgroundColor: 'rgba(59, 59, 59, 0.8)',
+		flex: 1
 	}
 });

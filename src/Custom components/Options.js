@@ -16,6 +16,12 @@ export default function Options(){
 
 	const [modalStatistiche, setModalStatistiche] = useState(false);
 
+	const [modalComeGiocare, setModalComeGiocare] = useState(false);
+
+	const [modalMedaglie, setModalMedaglie] = useState(false);
+
+	const [modalTrofei, setModalTrofei] = useState(false);
+
     return(
 		<View style={styles.container}>
 
@@ -63,10 +69,25 @@ export default function Options(){
 
 						<View style={styles.titlesContainer}>
 							<Text style={styles.titlesText}>Regole</Text>
+							
+							<TouchableOpacity onPress={() => {
+								setModalVisible(false);
+								setModalComeGiocare(true);}}>
+								<Text style={styles.text}>Come giocare?</Text>
+							</TouchableOpacity>
 
-							<Text style={styles.text}>Come giocare?</Text>
-							<Text style={styles.text}>Come ottenere medaglie?</Text>
-							<Text style={styles.text}>Come funzionano i trofei?</Text>
+							<TouchableOpacity onPress={() => {
+								setModalVisible(false);
+								setModalMedaglie(true);}}>
+								<Text style={styles.text}>Come ottenere medaglie?</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity onPress={() => {
+								setModalVisible(false);
+								setModalTrofei(true);}}>
+								<Text style={styles.text}>Come funzionano i trofei?</Text>
+							</TouchableOpacity>
+							
 						</View>
 
 						<View style={styles.titlesContainer}>
@@ -90,6 +111,7 @@ export default function Options(){
 			transparent = {true}
 			visible = {modalStatistiche}
 			>
+				<View style={styles.containerSfondo}>
 
 					<View style={styles.modalContainer2}>
 
@@ -183,6 +205,96 @@ export default function Options(){
 						</View>
 
 					</View>
+				</View>
+			</Modal>
+
+			<Modal
+			animationType = "none"
+			transparent = {true}
+			visible = {modalComeGiocare}
+			>
+				<View style={styles.containerSfondo}>
+
+					<View style={styles.modalContainer3}>
+						<View style={styles.modalHeader}>
+							<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalComeGiocare(false)}>
+								<Feather name='x' size={width/10}/>
+							</TouchableOpacity>
+						</View>
+
+						<View style={styles.modalBody2}>
+							<Text style={styles.textComeGiocare}>
+								Il gioco prevede di indovinare una parola di 5 lettere
+								in 6 tentativi. Il primo tentativo non avrà alcun suggerimento,
+								dopo aver tentato di indovinare una parola le lettere si coloriranno 
+								con questo schema: {"\n"} {"\n"}
+									-Verde: se la lettera è indovinata nella posizione giusta {"\n"} {"\n"}
+									-Giallo: se la lettera è presente nella parola ma nella posizione sbagliata {"\n"} {"\n"}
+									-Grigio scuro: se la lettera non è presente
+							</Text>
+						</View>
+					</View>
+				</View>
+
+			</Modal>
+
+			<Modal
+			animationType = "none"
+			transparent = {true}
+			visible = {modalMedaglie}
+			>
+				<View style={styles.containerSfondo}>
+
+					<View style={styles.modalContainer4}>
+						<View style={styles.modalHeader}>
+							<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalMedaglie(false)}>
+								<Feather name='x' size={width/10}/>
+							</TouchableOpacity>
+						</View>
+
+						<View style={styles.modalBody2}>
+							<Text style={styles.textComeGiocare}>
+								Per vincere le medaglie è necessario indovinare 
+								la parola in pochissimi tentativi, in particolare: {"\n"} {"\n"}
+								-1 tentativo: medaglia di smeraldo {"\n"} {"\n"}
+								-2 tentativi: medaglia di rubino {"\n"} {"\n"}
+								-3 tentativi: medaglia di zaffiro
+							</Text>
+						</View>
+					</View>
+				</View>
+
+			</Modal>
+
+			<Modal
+			animationType = "none"
+			transparent = {true}
+			visible = {modalTrofei}
+			>
+				<View style={styles.containerSfondo}>
+
+					<View style={styles.modalContainer5}>
+						<View style={styles.modalHeader}>
+							<TouchableOpacity style={styles.modalClickHeader} onPress={() => setModalTrofei(false)}>
+								<Feather name='x' size={width/10}/>
+							</TouchableOpacity>
+						</View>
+
+						<View style={styles.modalBody2}>
+							<Text style={styles.textComeGiocare}>
+								Per vincere i trofei è necessario avere un buon KDA
+								a fine della stagione, le stagioni durano 3 mesi!
+								I trofei presenti sono: {"\n"} {"\n"}
+								-Diamante: KDA minore di 3,4 {"\n"} {"\n"}
+								-Platino: KDA compreso tra 4 e 3,5 {"\n"} {"\n"} 
+								-Oro: KDA compreso tra 5 e 4 {"\n"} {"\n"}
+								-Argento: KDA compreso tra 6 e 5 {"\n"} {"\n"}
+								-Bronzo: KDA maggiore di 6
+							</Text>
+						</View>
+					</View>
+				</View>
+
 			</Modal>
 
 			<TouchableOpacity style={styles.container} 

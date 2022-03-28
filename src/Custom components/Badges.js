@@ -23,13 +23,13 @@ export default function Badges(){
 
 			<View style={styles.title_holder}>
 				<View style={styles.blockOne}>
-					<Text style={styles.titles}>Plat: 0</Text>
+					<Text style={styles.titles}>0</Text>
 				</View>
 				<View style={styles.blockTwo}>
-					<Text style={styles.titles}>Oro: 0</Text>
+					<Text style={styles.titles}>0</Text>
 				</View>
 				<View style={styles.blockThree}>
-					<Text style={styles.titles}>Argen: 0</Text>
+					<Text style={styles.titles}>0</Text>
 				</View>
 
 			</View>

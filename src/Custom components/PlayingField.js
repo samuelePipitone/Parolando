@@ -1142,6 +1142,7 @@ export default function PlayingField(myNavigation){
 				transparent = {true}
 				visible = {modalVisible}
 				>
+					<View style={styles.containerSfondo}>
 
 					<View style={styles.modalContainer}>
 
@@ -1233,7 +1234,8 @@ export default function PlayingField(myNavigation){
 								</TouchableOpacity>
 							</View>
 						</View>
-
+						
+					</View>
 					</View>
 				</Modal>
 
