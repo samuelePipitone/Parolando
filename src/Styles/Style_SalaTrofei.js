@@ -81,7 +81,6 @@ export default StyleSheet.create({
 	},
 	//---------------footer-------------------------
 	footer: {
-		backgroundColor: 'green',
 		flex: 1,
 		flexDirection: 'row'
 	},
