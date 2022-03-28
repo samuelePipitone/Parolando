@@ -10,7 +10,7 @@ import styles from '../Styles/Style_Options'
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height; //full height
 
-export default function Options(){
+export default function Options({ navigation }){
 
 	const [modalVisible, setModalVisible] = useState(false);
 
@@ -63,8 +63,14 @@ export default function Options(){
 								
 							</TouchableOpacity>
 
+							<TouchableOpacity onPress={() => navigation.navigate('SalaTrofei')}>
 								<Text style={styles.text}>Sala dei trofei</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity onPress={() => navigation.navigate('Classifica')}>
 								<Text style={styles.text}>Classifica</Text>
+							</TouchableOpacity>
+
 						</View>
 
 						<View style={styles.titlesContainer}>

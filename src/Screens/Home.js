@@ -35,7 +35,7 @@ export default function Home({ navigation }){
 					</View>
 
 					<View style={styles.header_options}>
-						<Options/>
+						<Options navigation={navigation}/>
 					</View>
 
 				</View>
