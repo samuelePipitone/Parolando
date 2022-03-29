@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, StatusBar } from "react-native";
 
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height; //full height
@@ -6,10 +6,14 @@ var height = Dimensions.get('window').height; //full height
 export default StyleSheet.create({
 	container: {
 		flex: 1,
-        //backgroundColor: 'grey',
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: '10%',
+	},
+	modalSuperContainer: {
+		flex: 1,
+		marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		backgroundColor: 'rgba(59, 59, 59, 0.8)',
 	},
 	modalContainer: {
 		flex: 1,
@@ -18,16 +22,16 @@ export default StyleSheet.create({
 		alignSelf: 'flex-end',
 		borderLeftWidth: 1,
 		borderLeftColor: 'black',
-		alignItems: 'center',
-		marginTop: '4%',
 	},
 	titlesContainer: {
-		//backgroundColor: 'pink',
-		borderBottomColor: 'black',
-		borderBottomWidth: 1,
+		borderBottomColor: '#171717',
+		borderBottomWidth: 0.8,
 	},
 	titlesContainerLast: {
-		//backgroundColor: 'pink',
+		
+	},
+	icons: {
+		flexDirection: 'row',
 		
 	},
 	titlesText: {
@@ -36,11 +40,12 @@ export default StyleSheet.create({
 		fontSize: 16,
 		marginBottom: '20%',
 		alignSelf: 'center',
-		marginTop: '5%'
+		marginTop: '5%',
+		letterSpacing: 1
 	},
 	headerOptions: {
 		flexDirection: 'row',
-		height: height/10,
+		height: height/2,
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: height/10,
@@ -50,7 +55,8 @@ export default StyleSheet.create({
 	titlesTextHeader: {
 		color: 'black',
 		fontWeight: 'bold',
-		fontSize: 24
+		fontSize: width/16,
+		letterSpacing: 2
 	},
 	titlesContainerHeader: {
 		flex: 3,
@@ -60,7 +66,7 @@ export default StyleSheet.create({
 		flex: 1
 	},
 	text:{
-		marginBottom: '10%'
+		marginBottom: '15%'
 	},
 	modalTitolo: {
 		fontWeight: 'bold',
@@ -199,7 +205,8 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	inner: {
-		width: '80%'
+		width: '80%',
+		marginLeft: width/14
 	},
 	button:{
 		borderRadius: 5,
@@ -256,4 +263,9 @@ export default StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 4
 	},
+	data: {
+		fontWeight: 'bold',
+		letterSpacing: 1,
+		fontSize: width/16
+	}
 });

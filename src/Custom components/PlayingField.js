@@ -24,7 +24,7 @@ let puntatore = 0;
 	TODO: forse separare keyboard?
 */
 
-export default function PlayingField(myNavigation){
+export default function PlayingField( {navigation} ){
 
 	const [keyBoard, setKeyboard] = useState(data1);
 
@@ -48,23 +48,23 @@ export default function PlayingField(myNavigation){
 
 	const [wordle, setWordle] = useState([
 		{
-			letter: "P",
-			visited: false
-		},
-		{
-			letter: "A",
-			visited: false
-		},
-		{
-			letter: "L",
-			visited: false
-		},
-		{
-			letter: "L",
+			letter: "T",
 			visited: false
 		},
 		{
 			letter: "E",
+			visited: false
+		},
+		{
+			letter: "R",
+			visited: false
+		},
+		{
+			letter: "S",
+			visited: false
+		},
+		{
+			letter: "O",
 			visited: false
 		}
 	]);
@@ -359,7 +359,7 @@ export default function PlayingField(myNavigation){
 					}
 				};
 			default: {
-				myNavigation.navigate('Error');
+				navigation.navigate('Error');
 				break;
 			}
 		}
@@ -1223,7 +1223,7 @@ export default function PlayingField(myNavigation){
 								</View>
 
 								<View style={styles.modalFooterLeftBottom}>
-									<Text>1 giorno</Text>
+									<Text style={styles.data}>1 giorno</Text>
 								</View>
 							</View>
 

@@ -321,5 +321,10 @@ export default StyleSheet.create({
 	containerSfondo: {
 		backgroundColor: 'rgba(59, 59, 59, 0.8)',
 		flex: 1
+	},
+	data: {
+		fontWeight: 'bold',
+		letterSpacing: 1,
+		fontSize: width/16
 	}
 });

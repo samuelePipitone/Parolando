@@ -16,7 +16,7 @@ export default function Classifica({ navigation }){
 
 				<TouchableOpacity 
 				style={styles.headerLeft}
-				onPress={() => navigation.navigate('Home')}
+				onPress={() => navigation.goBack()}
 				>
 
 					<AntDesign name="left" size={width/10}/>

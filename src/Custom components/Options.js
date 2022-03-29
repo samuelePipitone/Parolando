@@ -4,6 +4,9 @@ import { TouchableOpacity, Dimensions, View, ScrollView, Modal, Text } from "rea
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+
 
 import styles from '../Styles/Style_Options'
 
@@ -29,8 +32,11 @@ export default function Options({ navigation }){
 			animationType = "slide"
 			transparent = {true}
 			visible = {modalVisible}
+			statusBarTranslucent = {true}
+			propagateSwipe
 			>
-				<ScrollView contentContainerStyle ={styles.modalContainer}>
+				<View style={styles.modalSuperContainer}>
+				<ScrollView style ={styles.modalContainer}>
 
 					<View style={styles.headerOptions}>
 						<View style={styles.titlesContainerHeader}>
@@ -57,18 +63,42 @@ export default function Options({ navigation }){
 
 							<TouchableOpacity onPress={() => {
 								setModalVisible(false);
-								setModalStatistiche(true);}}>
+								setModalStatistiche(true);}}
+								style={styles.icons}
+								>
 
 								<Text style={styles.text}>Statistiche</Text>
+								<FontAwesome 
+								name="bar-chart" 
+								size={width/18}
+								style = {{marginLeft: width/20}}/>
 								
 							</TouchableOpacity>
 
-							<TouchableOpacity onPress={() => navigation.navigate('SalaTrofei')}>
+							<TouchableOpacity onPress={() => {
+								setModalVisible(false);
+								navigation.push('SalaTrofei')
+								}}
+								style={styles.icons}
+								>
 								<Text style={styles.text}>Sala dei trofei</Text>
+								<Entypo 
+								name="trophy"
+								size={width/18}
+								style = {{marginLeft: width/20}} />
 							</TouchableOpacity>
 
-							<TouchableOpacity onPress={() => navigation.navigate('Classifica')}>
+							<TouchableOpacity onPress={() => {
+								setModalVisible(false);
+								navigation.push('Classifica')
+								}}
+								style={styles.icons}
+								>
 								<Text style={styles.text}>Classifica</Text>
+								<Fontisto 
+								name="list-1"
+								size={width/18}
+								style = {{marginLeft: width/20}} />
 							</TouchableOpacity>
 
 						</View>
@@ -78,19 +108,25 @@ export default function Options({ navigation }){
 							
 							<TouchableOpacity onPress={() => {
 								setModalVisible(false);
-								setModalComeGiocare(true);}}>
+								setModalComeGiocare(true);}}
+								style={styles.icons}
+								>
 								<Text style={styles.text}>Come giocare?</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity onPress={() => {
 								setModalVisible(false);
-								setModalMedaglie(true);}}>
+								setModalMedaglie(true);}}
+								style={styles.icons}
+								>
 								<Text style={styles.text}>Come ottenere medaglie?</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity onPress={() => {
 								setModalVisible(false);
-								setModalTrofei(true);}}>
+								setModalTrofei(true);}}
+								style={styles.icons}
+								>
 								<Text style={styles.text}>Come funzionano i trofei?</Text>
 							</TouchableOpacity>
 							
@@ -99,7 +135,10 @@ export default function Options({ navigation }){
 						<View style={styles.titlesContainer}>
 							<Text style={styles.titlesText}>Modalità scura</Text>
 
-							<Text style={styles.text}>Attiva/Disattiva</Text>
+							<View style={styles.icons}>
+								<Text style={styles.text}>Attiva/Disattiva</Text>
+							</View>
+
 						</View>
 
 						<View style={styles.titlesContainerLast}>
@@ -110,12 +149,14 @@ export default function Options({ navigation }){
 
 					</View>
 				</ScrollView>
+				</View>
 			</Modal>
 
 			<Modal
 			animationType = "none"
 			transparent = {true}
 			visible = {modalStatistiche}
+			statusBarTranslucent = {true}
 			>
 				<View style={styles.containerSfondo}>
 
@@ -180,7 +221,7 @@ export default function Options({ navigation }){
 							<View style={styles.modalBodyDown}>
 
 								<View style={styles.modalBodyDownUp}>
-									<Text style={styles.modalTitolo}>Titolo</Text>
+									<Text style={styles.modalTitolo}>Tentativi:</Text>
 								</View>
 
 								<View style={styles.modalBodyDownDown}>
@@ -198,7 +239,7 @@ export default function Options({ navigation }){
 								</View>
 
 								<View style={styles.modalFooterLeftBottom}>
-									<Text>1 giorno</Text>
+									<Text style={styles.data}>24:00:00</Text>
 								</View>
 							</View>
 
@@ -218,6 +259,7 @@ export default function Options({ navigation }){
 			animationType = "none"
 			transparent = {true}
 			visible = {modalComeGiocare}
+			statusBarTranslucent = {true}
 			>
 				<View style={styles.containerSfondo}>
 
@@ -248,6 +290,7 @@ export default function Options({ navigation }){
 			animationType = "none"
 			transparent = {true}
 			visible = {modalMedaglie}
+			statusBarTranslucent = {true}
 			>
 				<View style={styles.containerSfondo}>
 
@@ -276,6 +319,7 @@ export default function Options({ navigation }){
 			animationType = "none"
 			transparent = {true}
 			visible = {modalTrofei}
+			statusBarTranslucent = {true}
 			>
 				<View style={styles.containerSfondo}>
 
