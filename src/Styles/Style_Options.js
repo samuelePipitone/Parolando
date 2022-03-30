@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, StatusBar } from "react-native";
+import { StyleSheet, Dimensions, StatusBar, Platform } from "react-native";
 
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height; //full height
@@ -95,8 +95,8 @@ export default StyleSheet.create({
 		flex: 1,
 		marginRight: width/35,
 		marginLeft: width/35,
-		marginTop: height/8,
-		marginBottom: height/(2,5),
+		marginTop: height/10,
+		marginBottom: height/(2,6),
 		borderColor: '#3d3d3d',
 		borderWidth: 1,
 		borderRadius: 4
@@ -145,12 +145,12 @@ export default StyleSheet.create({
 		justifyContent: 'center',
 	},
 	modalText:{
-		height: height/12,
+		height: height/15,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	modalValue:{
-		height: height/12,		
+		height: height/15,		
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -174,14 +174,16 @@ export default StyleSheet.create({
 	},
 	modalFooter:{
 		//backgroundColor: 'grey',
-		flex: 4,
-		flexDirection: 'row'
+		flex: 8,
+		flexDirection: 'row',
+		marginTop: '5%',
+		alignSelf: 'center',
 	},
 	modalFooterLeft:{
 		//backgroundColor: 'orange',
 		flex: 1,
-		borderRightColor: 'black',
-		borderRightWidth: 1,
+		borderBottomColor: 'black',
+		borderBottomWidth: 1,
 		marginTop:'3%',
 		marginBottom: '3%'
 	},
@@ -267,5 +269,8 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		letterSpacing: 1,
 		fontSize: width/16
+	},
+	graphStyle: {
+		
 	}
 });

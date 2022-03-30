@@ -62,14 +62,15 @@ export default StyleSheet.create({
     },
 	modalContainer: {	
 		backgroundColor: 'white',
-		flex: 1,
 		marginRight: width/35,
 		marginLeft: width/35,
-		marginTop: height/8,
-		marginBottom: height/(2,5),
+		marginTop: height/20,
+		marginBottom: height/5,
 		borderColor: '#3d3d3d',
 		borderWidth: 1,
-		borderRadius: 4
+		borderRadius: 4,
+		height: height/1.2,
+		width: width/1.1
 	},
 	modalHeader:{
 		//backgroundColor: 'red',
@@ -115,12 +116,12 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	modalText:{
-		height: height/12,
+		height: height/15,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	modalValue:{
-		height: height/12,		
+		height: height/15,		
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -144,14 +145,16 @@ export default StyleSheet.create({
 	},
 	modalFooter:{
 		//backgroundColor: 'grey',
-		flex: 4,
-		flexDirection: 'row'
+		flex: 7,
+		flexDirection: 'row',
+		marginTop: '5%',
+		alignSelf: 'center',
 	},
 	modalFooterLeft:{
 		//backgroundColor: 'orange',
 		flex: 1,
-		borderRightColor: 'black',
-		borderRightWidth: 1,
+		borderBottomColor: 'black',
+		borderBottomWidth: 1,
 		marginTop:'3%',
 		marginBottom: '3%'
 	},
@@ -326,5 +329,23 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		letterSpacing: 1,
 		fontSize: width/16
-	}
+	},
+	underModalWin: {
+		height: height/12,
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'row',
+	},
+	textWin: {
+		color: 'green',
+		fontWeight: 'bold',
+		fontSize: width/18,
+		marginLeft: '3%',
+	},
+	textLose: {
+		color: 'red',
+		fontWeight: 'bold',
+		fontSize: width/18,
+		marginLeft: '3%',
+	},
 });
