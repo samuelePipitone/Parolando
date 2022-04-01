@@ -32,13 +32,21 @@ export default StyleSheet.create({
 	},
 	icons: {
 		flexDirection: 'row',
-		
 	},
 	titlesText: {
 		fontWeight: 'bold',
 		color: 'black',
 		fontSize: 16,
 		marginBottom: '20%',
+		alignSelf: 'center',
+		marginTop: '5%',
+		letterSpacing: 1
+	},
+	titlesTextDark: {
+		fontWeight: 'bold',
+		color: 'black',
+		fontSize: 16,
+		marginBottom: '10%',
 		alignSelf: 'center',
 		marginTop: '5%',
 		letterSpacing: 1
@@ -66,7 +74,13 @@ export default StyleSheet.create({
 		flex: 1
 	},
 	text:{
-		marginBottom: '15%'
+		marginBottom: '15%',
+	},
+	textDark:{
+		marginBottom: '15%',
+		marginTop: height/29,
+		marginLeft: '3%',
+		marginRight: '15%'
 	},
 	modalTitolo: {
 		fontWeight: 'bold',
@@ -224,7 +238,12 @@ export default StyleSheet.create({
 		flex: 1
 	},
 	modalBody2:{
-		flex: 6,
+		flex: 7,
+		marginLeft: '5%',
+		marginRight: '5%'
+	},
+	modalBody3:{
+		flex: 5,
 		marginLeft: '5%',
 		marginRight: '5%'
 	},
@@ -249,7 +268,7 @@ export default StyleSheet.create({
 		marginRight: width/35,
 		marginLeft: width/35,
 		marginTop: height/8,
-		marginBottom: height/2.2,
+		marginBottom: height/2,
 		borderColor: '#3d3d3d',
 		borderWidth: 1,
 		borderRadius: 4

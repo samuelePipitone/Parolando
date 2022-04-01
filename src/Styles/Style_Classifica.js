@@ -64,7 +64,7 @@ export default StyleSheet.create({
 	eloPlatino: {
 		width: width/3.2,
 		height: height/20,
-		backgroundColor: '#008540', //paltino
+		backgroundColor: '#008540', //platino
 		marginLeft: '3%',
 		marginTop: '6%',
 		borderRadius: 3,

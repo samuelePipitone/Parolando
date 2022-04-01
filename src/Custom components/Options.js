@@ -7,6 +7,7 @@ import {
   ScrollView,
   Modal,
   Text,
+  Switch
 } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
@@ -46,6 +47,10 @@ export default function Options({ navigation }) {
   const [modalMedaglie, setModalMedaglie] = useState(false);
 
   const [modalTrofei, setModalTrofei] = useState(false);
+
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => {setIsEnabled(!isEnabled)};
 
   return (
     <View style={styles.container}>
@@ -166,10 +171,16 @@ export default function Options({ navigation }) {
               </View>
 
               <View style={styles.titlesContainer}>
-                <Text style={styles.titlesText}>Modalità scura</Text>
+                <Text style={styles.titlesTextDark}>Modalità scura</Text>
 
                 <View style={styles.icons}>
-                  <Text style={styles.text}>Attiva/Disattiva</Text>
+                  <Text style={styles.textDark}>Attiva/Disattiva</Text>
+				  	<Switch
+					trackColor={{ false: "#767577", true: "#40b860"}}
+					thumbColor={isEnabled ? "#5c5c5c" : "#f4f3f4"}
+					onValueChange={toggleSwitch}
+					value={isEnabled}
+					/>
                 </View>
               </View>
 
@@ -318,16 +329,16 @@ export default function Options({ navigation }) {
             <View style={styles.modalBody2}>
               <Text style={styles.textComeGiocare}>
                 Il gioco prevede di indovinare una parola di 5 lettere in 6
-                tentativi. Il primo tentativo non avrà alcun suggerimento, dopo
+                tentativi. {"\n"} {"\n"}Il primo tentativo non avrà alcun suggerimento, dopo
                 aver tentato di indovinare una parola le lettere si coloriranno
                 con questo schema: {"\n"} {"\n"}
-                -Verde: se la lettera è indovinata nella posizione giusta {
+                -<Text style={{color: '#189e00'}}>Verde</Text>: se la lettera è indovinata nella posizione giusta {
                   "\n"
                 }{" "}
                 {"\n"}
-                -Giallo: se la lettera è presente nella parola ma nella
+                -<Text style={{color: "#c2ab00"}}>Giallo</Text>: se la lettera è presente nella parola ma nella
                 posizione sbagliata {"\n"} {"\n"}
-                -Grigio scuro: se la lettera non è presente
+                -<Text style={{color: '#696969'}}>Grigio scuro</Text>: se la lettera non è presente
               </Text>
             </View>
           </View>
@@ -351,7 +362,7 @@ export default function Options({ navigation }) {
               </TouchableOpacity>
             </View>
 
-            <View style={styles.modalBody2}>
+            <View style={styles.modalBody3}>
               <Text style={styles.textComeGiocare}>
                 Per vincere le medaglie è necessario indovinare la parola in
                 pochissimi tentativi, in particolare: {"\n"} {"\n"}
@@ -384,13 +395,13 @@ export default function Options({ navigation }) {
             <View style={styles.modalBody2}>
               <Text style={styles.textComeGiocare}>
                 Per vincere i trofei è necessario avere un buon KDA a fine della
-                stagione, le stagioni durano 3 mesi! I trofei presenti sono:{" "}
+                stagione, le stagioni durano 3 mesi!{"\n"} {"\n"}I trofei presenti sono:{" "}
                 {"\n"} {"\n"}
-                -Diamante: KDA minore di 3,4 {"\n"} {"\n"}
-                -Platino: KDA compreso tra 4 e 3,5 {"\n"} {"\n"}
-                -Oro: KDA compreso tra 5 e 4 {"\n"} {"\n"}
-                -Argento: KDA compreso tra 6 e 5 {"\n"} {"\n"}
-                -Bronzo: KDA maggiore di 6
+                -<Text style={{color: '#2871de', fontWeight: 'bold'}}>Diamante</Text>: KDA minore di 3,4 {"\n"} {"\n"}
+                -<Text style={{color: '#008540', fontWeight: 'bold'}}>Platino</Text>: KDA compreso tra 4 e 3,5 {"\n"} {"\n"}
+                -<Text style={{color: '#e8c400', fontWeight: 'bold'}}>Oro</Text>: KDA compreso tra 5 e 4 {"\n"} {"\n"}
+                -<Text style={{color: '#a3a3a3', fontWeight: 'bold'}}>Argento</Text>: KDA compreso tra 6 e 5 {"\n"} {"\n"}
+                -<Text style={{color: '#b36e2b', fontWeight: 'bold'}}>Bronzo</Text>: KDA maggiore di 6
               </Text>
             </View>
           </View>
