@@ -1,6 +1,8 @@
 import React from "react";
 import { View, SafeAreaView, Dimensions, Text,
-TouchableOpacity, Image } from "react-native";
+TouchableOpacity, Image, ScrollView } from "react-native";
+
+import { PieChart, BarChart } from "react-native-chart-kit";
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -8,6 +10,32 @@ import styles from '../Styles/Style_SalaTrofei';
 
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height; //full height
+
+const dataPieWin = [
+	{
+	  name: "Win",
+	  quantity: 10,
+	  color: "green",
+	  legendFontColor: "black",
+	  legendFontSize: 10
+	},
+	{
+	  name: "Lose",
+	  quantity: 5,
+	  color: "red",
+	  legendFontColor: "black",
+	  legendFontSize: 10
+	}
+  ];
+
+  const dataChart = {
+	labels: ["1", "2", "3", "4", "5", "6"],
+	datasets: [
+	  {
+		data: [1, 3, 2, 5, 7, 5],
+	  },
+	],
+  };
 
 export default function SalaTrofei({ navigation }){
 	return(
@@ -37,12 +65,10 @@ export default function SalaTrofei({ navigation }){
 
 					<View style={styles.bodyProfile}>
 
-						<View style={styles.circular}>
-							<Image 
-							source={require('../images/immagine.png')}
-							style={styles.immagine}
-							/>
-						</View>
+						<Image 
+						source={require('../images/immagine.png')}
+						style={styles.immagine}
+						/>
 
 					</View>
 
@@ -54,13 +80,217 @@ export default function SalaTrofei({ navigation }){
 
 					<View style={styles.bodyStatisticheContainer}>
 
-						<View style={styles.bodyStatTitolo}>
-							<Text style={styles.statistiche}>Statistiche:</Text>
-						</View>
+						<ScrollView style={styles.scrolla}>
 
-						<View style={styles.bodyStatBody}>
-							<Text style={{alignSelf: 'center'}}>GRAFICO</Text>
-						</View>
+							<View style={styles.headerScrolla}>
+	
+								<Text style={styles.statistiche}>Statistiche:</Text>
+
+							</View>
+
+							<View style={styles.bodyScrolla}>
+
+								<View style={styles.pies}>
+
+									<PieChart
+									data={dataPieWin}
+									width={width/2}
+									height={height/8}
+									chartConfig={{
+										decimalPlaces: 2, // optional, defaults to 2dp
+										color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+										labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+									  }}
+									accessor={"quantity"}
+									backgroundColor={"transparent"}
+									paddingLeft={width/100}
+									style={{alignSelf: 'center'}}
+									/>
+
+									<PieChart
+									data={dataPieWin}
+									width={width/2}
+									height={height/8}
+									chartConfig={{
+										decimalPlaces: 2, // optional, defaults to 2dp
+										color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+										labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+									  }}
+									accessor={"quantity"}
+									backgroundColor={"transparent"}
+									paddingLeft={width/100}
+									style={{alignSelf: 'center'}}
+									/>
+
+								</View>
+
+								<View style={styles.chart}>
+
+									<Text style={styles.testoChart}>Tentativi:</Text>
+
+									<BarChart
+									data={dataChart}
+									width={width}
+									height={height / 3}
+									chartConfig={{
+									color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+									labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+									barPercentage: 0.6,
+									backgroundGradientFrom: "white",
+									backgroundGradientTo: "white",
+									fromZero: true,
+									}}
+									verticalLabelRotation={0}
+									style={{marginTop: width/5}}
+									/>
+
+								</View>
+
+								<View style={styles.trofei}>
+
+									<View style={styles.trofeiTitolo}>
+
+										<Text style={styles.trofeiText}>Trofei:</Text>
+
+									</View>
+
+									<View style={styles.trofeiBody}>
+
+										<ScrollView
+										horizontal={true}
+										>
+
+											<View style={styles.trofeoBlocco}>
+												<Image 
+												source={require('../images/trofeo.png')}
+												style={styles.trofeoImage}
+												/>
+												<View style={styles.testoTrofei}>
+													<Text style={styles.elo}>Diamante:</Text> 
+													<Text style={styles.quantity}>0</Text>
+												</View> 
+											</View>
+											<View style={styles.trofeoBlocco}>
+												<Image 
+												source={require('../images/trofeo.png')}
+												style={styles.trofeoImage}
+												/>
+												<View style={styles.testoTrofei}>
+													<Text style={styles.elo}>Platino:</Text> 
+													<Text style={styles.quantity}>0</Text>
+												</View> 
+											</View>
+											<View style={styles.trofeoBlocco}>
+												<Image 
+												source={require('../images/trofeo.png')}
+												style={styles.trofeoImage}
+												/>
+												<View style={styles.testoTrofei}>
+													<Text style={styles.elo}>Oro:</Text> 
+													<Text style={styles.quantity}>0</Text>
+												</View> 
+											</View>							
+											<View style={styles.trofeoBlocco}>
+												<Image 
+												source={require('../images/trofeo.png')}
+												style={styles.trofeoImage}
+												/>
+												<View style={styles.testoTrofei}>
+													<Text style={styles.elo}>Argento:</Text> 
+													<Text style={styles.quantity}>0</Text>
+												</View> 
+											</View>
+											<View style={styles.trofeoBlocco}>
+												<Image 
+												source={require('../images/trofeo.png')}
+												style={styles.trofeoImage}
+												/>
+												<View style={styles.testoTrofei}>
+													<Text style={styles.elo}>Bronzo:</Text> 
+													<Text style={styles.quantity}>0</Text>
+												</View> 
+											</View>
+
+										</ScrollView>
+
+									</View>
+									
+								</View>
+
+								<View style={styles.trofei}>
+
+									<View style={styles.trofeiTitolo}>
+
+										<Text style={styles.trofeiText}>Medaglie:</Text>
+
+									</View>
+
+									<View style={styles.badgesBody}>
+								
+										<View style={styles.badges}>
+
+											<View style={styles.badgesImage}>
+
+												<Image 
+												source={require('../images/platinum.png')}
+												style={{width: '100%', height: '100%'}}
+												/>
+
+											</View>
+
+											<View style={styles.badgesFooter}> 
+
+												<Text style={styles.badgeFooterText}>0</Text>
+
+											</View>
+
+										</View>
+
+										<View style={styles.badges}>
+
+											<View style={styles.badgesImage}>
+
+												<Image 
+												source={require('../images/gold.jpg')}
+												style={{width: '100%', height: '100%'}}
+												/>
+
+											</View>
+
+											<View style={styles.badgesFooter}> 
+
+												<Text style={styles.badgeFooterText}>0</Text>
+
+											</View>
+
+										</View>
+
+										<View style={styles.badges}>
+
+											<View style={styles.badgesImage}>
+
+												<Image 
+												source={require('../images/silver.jpg')}
+												style={{width: '100%', height: '100%'}}
+												/>
+
+											</View>
+
+											<View style={styles.badgesFooter}> 
+
+												<Text style={styles.badgeFooterText}>0</Text>
+
+											</View>
+
+										</View>
+
+									</View>
+
+								</View>
+
+							</View>
+
+						</ScrollView>
 
 					</View>
 
