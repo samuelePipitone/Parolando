@@ -13,7 +13,7 @@ export default StyleSheet.create({
 	modalSuperContainer: {
 		flex: 1,
 		marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-		backgroundColor: 'rgba(59, 59, 59, 0.8)',
+		backgroundColor: 'rgba(59, 59, 59, 0.8)'
 	},
 	modalContainer: {
 		flex: 1,

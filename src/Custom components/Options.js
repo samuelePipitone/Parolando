@@ -7,7 +7,8 @@ import {
   ScrollView,
   Modal,
   Text,
-  Switch
+  Switch,
+  TouchableWithoutFeedback
 } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
@@ -62,6 +63,7 @@ export default function Options({ navigation }) {
         propagateSwipe
       >
         <View style={styles.modalSuperContainer}>
+			
           <ScrollView style={styles.modalContainer}>
             <View style={styles.headerOptions}>
               <View style={styles.titlesContainerHeader}>
@@ -97,12 +99,12 @@ export default function Options({ navigation }) {
                   }}
                   style={styles.icons}
                 >
-                  <Text style={styles.text}>Statistiche</Text>
-                  <FontAwesome
+					<FontAwesome
                     name="bar-chart"
                     size={width / 18}
-                    style={{ marginLeft: width / 20 }}
+                    style={{ marginRight: width / 40 }}
                   />
+                  <Text style={styles.text}>Statistiche</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -112,12 +114,12 @@ export default function Options({ navigation }) {
                   }}
                   style={styles.icons}
                 >
-                  <Text style={styles.text}>Sala dei trofei</Text>
-                  <Entypo
+					<Entypo
                     name="trophy"
                     size={width / 18}
-                    style={{ marginLeft: width / 20 }}
+                    style={{ marginRight: width / 27 }}
                   />
+                  <Text style={styles.text}>Sala dei trofei</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -127,12 +129,12 @@ export default function Options({ navigation }) {
                   }}
                   style={styles.icons}
                 >
-                  <Text style={styles.text}>Classifica</Text>
-                  <Fontisto
+					<Fontisto
                     name="list-1"
                     size={width / 18}
-                    style={{ marginLeft: width / 20 }}
+                    style={{ marginRight: width / 40 }}
                   />
+                  <Text style={styles.text}>Classifica</Text>
                 </TouchableOpacity>
               </View>
 

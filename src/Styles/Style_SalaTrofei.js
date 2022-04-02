@@ -143,6 +143,13 @@ export default StyleSheet.create({
 		width: width/3,
 		justifyContent: 'center'
 	},
+	trofeoBlocco2: {
+		alignSelf: 'center',
+		marginRight: width/12,
+		height: height/6,
+		width: width/3,
+		justifyContent: 'center',
+	},
 	elo: {
 		marginRight: '5%',
 	},
@@ -170,6 +177,27 @@ export default StyleSheet.create({
 		alignSelf: 'center',
 		fontWeight: 'bold',
 		fontSize: width/18
+	},
+	modalImmagineContainer: {
+		flex: 1,
+		backgroundColor: 'rgba(59, 59, 59, 0.8)'
+	},
+	modalImmagine: {
+		flex: 1,
+		marginRight: width/20,
+		marginLeft: width/20,
+		marginBottom: height/3,
+		marginTop: height/4
+	},
+	close:{
+		position: 'absolute',
+		height: height/12,
+		width: width/6,
+		backgroundColor: 'white',
+		marginTop: height/1.45,
+		alignSelf: 'center',
+		borderRadius: 50,
+		justifyContent: 'center'
 	},
 	//---------------footer-------------------------
 	footer: {

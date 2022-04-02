@@ -3,13 +3,16 @@
     "name": "Parolando",
     "owner": "ssm_team",
     "slug": "Parolando",
-    "version": "2.0.3",
-	"icon": "src/images/wordlegame.png",
+    "version": "2.1.0",
+    "icon": "src/images/wordlegame.png",
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
       "package": "com.ssm_team.Parolando"
+    },
+    "ios": {
+      "bundleIdentifier": "io.expo.client"
     }
   }
 }
