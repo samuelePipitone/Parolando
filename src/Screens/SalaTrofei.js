@@ -230,7 +230,7 @@ export default function SalaTrofei({ navigation }) {
                       <View style={styles.badgesImage}>
                         <Image
                           source={require("../images/platinum.png")}
-                          style={{ width: "100%", height: "100%" }}
+                          style={{ width: "80%", height: "80%", alignSelf: 'center' }}
                         />
                       </View>
 
@@ -243,7 +243,7 @@ export default function SalaTrofei({ navigation }) {
                       <View style={styles.badgesImage}>
                         <Image
                           source={require("../images/gold.jpg")}
-                          style={{ width: "100%", height: "100%" }}
+                          style={{ width: "80%", height: "80%", alignSelf: 'center' }}
                         />
                       </View>
 
@@ -256,7 +256,7 @@ export default function SalaTrofei({ navigation }) {
                       <View style={styles.badgesImage}>
                         <Image
                           source={require("../images/silver.jpg")}
-                          style={{ width: "100%", height: "100%" }}
+                          style={{ width: "80%", height: "80%", alignSelf: 'center' }}
                         />
                       </View>
 
@@ -267,14 +267,14 @@ export default function SalaTrofei({ navigation }) {
                   </View>
                 </View>
               </View>
+			 	 <View style={styles.footer}>
+					<Text style={styles.credits}>SSM Team</Text>
+					<Text style={styles.donate}>Donate!</Text>
+				</View>
             </ScrollView>
           </View>
         </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.credits}>SSM Team</Text>
-          <Text style={styles.donate}>Donate!</Text>
-        </View>
       </View>
     </SafeAreaView>
   );

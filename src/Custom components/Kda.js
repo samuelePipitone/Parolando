@@ -22,6 +22,7 @@ export default function Kda(){
 			transparent = {true}
 			visible = {modal}
 			>
+				<TouchableOpacity style={styles.super} onPress={() => setModal(false)}>
 				<View style={styles.modalContainer}>
 
 					<View style={styles.modalHeader}>
@@ -35,6 +36,7 @@ export default function Kda(){
 					</View>
 
 				</View>
+				</TouchableOpacity>
 			</Modal>
 		</View>
     );

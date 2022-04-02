@@ -62,7 +62,10 @@ export default function Options({ navigation }) {
         statusBarTranslucent={true}
         propagateSwipe
       >
-        <View style={styles.modalSuperContainer}>
+        <TouchableOpacity 
+		style={styles.modalSuperContainer}
+		onPress={() => setModalVisible(false)}
+		>
 			
           <ScrollView style={styles.modalContainer}>
             <View style={styles.headerOptions}>
@@ -193,7 +196,7 @@ export default function Options({ navigation }) {
               </View>
             </View>
           </ScrollView>
-        </View>
+        </TouchableOpacity>
       </Modal>
 
       <Modal
@@ -202,7 +205,7 @@ export default function Options({ navigation }) {
         visible={modalStatistiche}
         statusBarTranslucent={true}
       >
-        <View style={styles.containerSfondo}>
+        <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalStatistiche(false)}>
           <View style={styles.modalContainer2}>
             <View style={styles.modalHeader}>
               <TouchableOpacity
@@ -308,7 +311,7 @@ export default function Options({ navigation }) {
               />
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </Modal>
 
       <Modal
@@ -317,7 +320,7 @@ export default function Options({ navigation }) {
         visible={modalComeGiocare}
         statusBarTranslucent={true}
       >
-        <View style={styles.containerSfondo}>
+        <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalComeGiocare(false)}>
           <View style={styles.modalContainer3}>
             <View style={styles.modalHeader}>
               <TouchableOpacity
@@ -344,7 +347,7 @@ export default function Options({ navigation }) {
               </Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </Modal>
 
       <Modal
@@ -353,7 +356,7 @@ export default function Options({ navigation }) {
         visible={modalMedaglie}
         statusBarTranslucent={true}
       >
-        <View style={styles.containerSfondo}>
+        <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalMedaglie(false)}>
           <View style={styles.modalContainer4}>
             <View style={styles.modalHeader}>
               <TouchableOpacity
@@ -374,7 +377,7 @@ export default function Options({ navigation }) {
               </Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </Modal>
 
       <Modal
@@ -383,7 +386,7 @@ export default function Options({ navigation }) {
         visible={modalTrofei}
         statusBarTranslucent={true}
       >
-        <View style={styles.containerSfondo}>
+        <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalTrofei(false)}>
           <View style={styles.modalContainer5}>
             <View style={styles.modalHeader}>
               <TouchableOpacity
@@ -407,7 +410,7 @@ export default function Options({ navigation }) {
               </Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </Modal>
 
       <TouchableOpacity

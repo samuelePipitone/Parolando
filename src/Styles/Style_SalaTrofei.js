@@ -168,15 +168,16 @@ export default StyleSheet.create({
 	},
 	badgesImage: {
 		height: '70%',
+		justifyContent: 'center'
 	},
 	badgesFooter: {
-		height: '30%',
-		justifyContent: 'center',
+		height: '25%',
+	
 	},
 	badgeFooterText: {
 		alignSelf: 'center',
 		fontWeight: 'bold',
-		fontSize: width/18
+		fontSize: width/20
 	},
 	modalImmagineContainer: {
 		flex: 1,
@@ -201,8 +202,11 @@ export default StyleSheet.create({
 	},
 	//---------------footer-------------------------
 	footer: {
-		flex: 0.7,
-		flexDirection: 'row'
+		flex: 1,
+		flexDirection: 'row',
+		marginBottom: '5%',
+		borderTopColor: 'black',
+		borderTopWidth: 0.4
 	},
 	credits: {
 		marginTop: '3%',

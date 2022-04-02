@@ -108,7 +108,9 @@ export default function PlayingField({ navigation }) {
             case 1: {
               checkWord(currentLength);
 			  additionalModal = "indovinata"
-              setModalVisible(true);
+			  setTimeout(() => {
+				setModalVisible(true);
+			  }, 1000)
               break;
             }
             case 0: {
@@ -1300,7 +1302,7 @@ export default function PlayingField({ navigation }) {
             visible={modalVisible}
             statusBarTranslucent={true}
           >
-            <View style={styles.containerSfondo}>
+            <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalVisible(false)}>
               <View style={styles.modalContainer}>
                 <View style={styles.modalHeader}>
                   <TouchableOpacity
@@ -1410,7 +1412,7 @@ export default function PlayingField({ navigation }) {
 
 				</View>
               </View>
-            </View>
+            </TouchableOpacity>
           </Modal>
         )}
 
@@ -1421,7 +1423,7 @@ export default function PlayingField({ navigation }) {
             visible={modalVisible}
             statusBarTranslucent={true}
           >
-            <View style={styles.containerSfondo}>
+            <TouchableOpacity style={styles.containerSfondo} onPress={() => setModalVisible(false)}>
               <View style={styles.modalContainer}>
                 <View style={styles.modalHeader}>
                   <TouchableOpacity
@@ -1531,7 +1533,7 @@ export default function PlayingField({ navigation }) {
 
 				</View>
               </View>
-            </View>
+            </TouchableOpacity>
           </Modal>
         )}
 

@@ -42,5 +42,9 @@ export default StyleSheet.create({
 		fontSize: width/24,
 		marginTop: '10%',
 		textAlign: 'center'
+	},
+	super: {
+		flex: 1,
+		backgroundColor: 'rgba(59, 59, 59, 0.8)'
 	}
 });
